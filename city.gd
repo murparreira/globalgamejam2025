@@ -1,4 +1,4 @@
 class_name City extends Node2D
 
-@export var grid_position : Vector2i
+@export var cleared : bool = false
 @export var minigame : String

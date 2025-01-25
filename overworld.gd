@@ -9,13 +9,17 @@ const HALF_CELL_SIZE := Vector2i(16, 16)
 const QUARTER_CELL_SIZE := Vector2i(8, 8)
 
 var cities_positions : Array = []
+var current_selected_city : City
 
 func _ready() -> void:
 	interact_label.visible = false
 	player.player_moved.connect(_on_player_moved)
 	var cities = get_tree().get_nodes_in_group("cities")
 	for city in cities:
-		cities_positions.append(game_area.local_to_map(city.position))
+		cities_positions.append({
+			"position": game_area.local_to_map(city.position),
+			"city": city
+		})
 	
 	print("USED CELLS: ")
 	print(game_area.get_used_cells())
@@ -33,7 +37,23 @@ func get_all_tile_positions(tilemaplayer: TileMapLayer, layer: int) -> Array:
 	return tile_positions
 
 func _on_player_moved(player_position: Vector2i) -> void:
-	if cities_positions.has(player_position):
-		interact_label.visible = true
-	else:
-		interact_label.visible = false
+	for city_data in cities_positions:
+		if city_data["position"] == player_position:
+			interact_label.visible = true
+			current_selected_city = city_data["city"]
+			print("Selected City: ", current_selected_city.name)
+			print("Minigame: ", current_selected_city.minigame)
+			print("Cleared: ", current_selected_city.cleared)
+			return
+	
+	interact_label.visible = false
+	current_selected_city = null
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("ui_accept"):
+		if current_selected_city != null:
+			print("SPACEBAR pressed in city: ", current_selected_city.name)
+			# Add your logic for what happens when SPACEBAR is pressed in a city
+			SceneManager.swap_scenes("res://minigame.tscn", get_tree().root, self, "fade_to_black")
+		else:
+			print("SPACEBAR pressed, but not in a city.")
