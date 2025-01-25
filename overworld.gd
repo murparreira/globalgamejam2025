@@ -3,6 +3,7 @@ extends Node2D
 @onready var game_area: TileMapLayer = $GameArea
 @onready var player: Player = $Player
 @onready var interact_label: RichTextLabel = $Visuals/HUD/InteractLabel
+@onready var city1: City = $City
 
 const CELL_SIZE := Vector2i(32, 32)
 const HALF_CELL_SIZE := Vector2i(16, 16)
@@ -13,7 +14,8 @@ var current_selected_city : City
 
 func _ready() -> void:
 	interact_label.visible = false
-	player.move_to_cell(Vector2i(1, 7))
+	player.move_to_cell(Vector2i(2, 15))
+	#city1.move_to_cell(Vector2i(2, 15))
 	player.animated_sprite_2d.play()
 	player.player_moved.connect(_on_player_moved)
 	var cities = get_tree().get_nodes_in_group("cities")

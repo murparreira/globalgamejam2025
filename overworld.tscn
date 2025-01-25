@@ -1,11 +1,35 @@
-[gd_scene load_steps=7 format=4 uid="uid://47v2yh7rmk6g"]
+[gd_scene load_steps=10 format=4 uid="uid://47v2yh7rmk6g"]
 
 [ext_resource type="Script" path="res://overworld.gd" id="1_lgbwe"]
 [ext_resource type="TileSet" uid="uid://tlsxhn46aqwj" path="res://resources/overworld.tres" id="1_lkodg"]
 [ext_resource type="PackedScene" uid="uid://equok5cjqcqu" path="res://resources/player.tscn" id="3_4f1sg"]
+[ext_resource type="Texture2D" uid="uid://h3gp0uw20h84" path="res://assets/tilemap-road.png" id="3_tj2br"]
 [ext_resource type="Texture2D" uid="uid://bv800icc1id03" path="res://assets/arvore1.png" id="7_eaucf"]
 [ext_resource type="PackedScene" uid="uid://3kgshpypy3rm" path="res://city.tscn" id="7_h0mxv"]
 [ext_resource type="Script" path="res://city.gd" id="8_5kpgn"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_e4cm7"]
+texture = ExtResource("3_tj2br")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+0:4/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_crgmu"]
+tile_size = Vector2i(64, 64)
+sources/0 = SubResource("TileSetAtlasSource_e4cm7")
 
 [node name="Overworld" type="Node2D"]
 script = ExtResource("1_lgbwe")
@@ -47,15 +71,15 @@ fit_content = true
 metadata/_edit_use_anchors_ = true
 
 [node name="GameArea" type="TileMapLayer" parent="." groups=["game_area"]]
-tile_map_data = PackedByteArray("AAABAAcABwAAAAAAAAABAAYABwAAAAAAAAABAAUABwAAAAAAAAABAAQABwAAAAAAAAABAAMABgAAAAAAAAACAAMABAAAAAAAAAADAAMABAAAAAAAAAAEAAMABAAAAAAAAAAFAAMABAAAAAAAAAAGAAMABAAAAAAAAAAHAAMABAAAAAAAAAA=")
-tile_set = ExtResource("1_lkodg")
+tile_map_data = PackedByteArray("AAACAA8AAAAAAAAAAAACAAsAAAABAAAAAAACAAwAAAABAAAAAAACAA0AAAABAAAAAAACAA4AAAABAAAAAAACAAoAAAAAAAEAAAADAAoAAAABAAEAAAAEAAoAAAABAAEAAAAFAAoAAAACAAMAAAAFAAsAAAABAAAAAAAFAAwAAAABAAAAAAAFAA0AAAAAAAAAAAAFAAcAAAABAAAAAAAFAAgAAAABAAAAAAAFAAkAAAABAAAAAAAFAAYAAAAAAAEAAAAGAAYAAAABAAEAAAAHAAYAAAABAAEAAAAIAAYAAAABAAEAAAAJAAYAAAABAAEAAAAKAAYAAAABAAEAAAALAAYAAAACAAEAAAALAAcAAAABAAAAAAALAAgAAAABAAAAAAALAAkAAAAAAAIAAAAMAAkAAAABAAEAAAANAAkAAAABAAEAAAAOAAkAAAABAAMAAAAPAAkAAAABAAEAAAAQAAkAAAABAAEAAAAOAAUAAAABAAAAAAAOAAYAAAABAAAAAAAOAAcAAAABAAAAAAAOAAgAAAABAAAAAAAOAAQAAAAAAAEAAAAPAAQAAAABAAEAAAAQAAQAAAABAAEAAAARAAQAAAABAAEAAAASAAQAAAACAAEAAAASAAUAAAABAAAAAAASAAYAAAABAAAAAAASAAcAAAABAAAAAAASAAgAAAABAAAAAAASAAkAAAACAAIAAAARAAkAAAABAAEAAAA=")
+tile_set = SubResource("TileSet_crgmu")
 
 [node name="Player" parent="." instance=ExtResource("3_4f1sg")]
-scale = Vector2(0.5, 0.5)
+scale = Vector2(0.25, 0.25)
 
 [node name="City" parent="." groups=["cities"] instance=ExtResource("7_h0mxv")]
-position = Vector2(128, 384)
-scale = Vector2(0.5, 0.5)
+position = Vector2(128, 640)
+scale = Vector2(0.25, 0.25)
 script = ExtResource("8_5kpgn")
 minigame = "wires"
 
@@ -82,3 +106,7 @@ texture = ExtResource("7_eaucf")
 [node name="Sprite2D6" type="Sprite2D" parent="."]
 position = Vector2(640, 320)
 texture = ExtResource("7_eaucf")
+
+[node name="City2" parent="." instance=ExtResource("7_h0mxv")]
+position = Vector2(512, 384)
+scale = Vector2(0.25, 0.25)

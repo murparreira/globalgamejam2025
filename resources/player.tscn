@@ -30,4 +30,4 @@ script = ExtResource("1_dvdog")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_begpe")
-frame_progress = 0.851506
+frame_progress = 0.560227
