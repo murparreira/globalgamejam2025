@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://kwe4yisyu54p"]
+[gd_scene load_steps=10 format=3 uid="uid://kwe4yisyu54p"]
 
 [ext_resource type="Script" path="res://minigame.gd" id="1_130j5"]
 [ext_resource type="PackedScene" uid="uid://3kgshpypy3rm" path="res://city.tscn" id="1_h0wuq"]
+[ext_resource type="Texture2D" uid="uid://dpkbp2vbvd8j1" path="res://assets/background.png" id="2_6n5ls"]
 [ext_resource type="PackedScene" uid="uid://equok5cjqcqu" path="res://resources/player.tscn" id="2_sqsnt"]
 [ext_resource type="Texture2D" uid="uid://du5shvjy2jh28" path="res://assets/level3.png" id="3_5s7bq"]
 
@@ -19,24 +20,16 @@ size = Vector2(64, 96)
 [node name="minigame" type="Node2D"]
 script = ExtResource("1_130j5")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-custom_minimum_size = Vector2(1920, 1080)
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = 1920.0
-offset_bottom = 1080.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 1)
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(960, 544)
+texture = ExtResource("2_6n5ls")
 
 [node name="City" parent="." instance=ExtResource("1_h0wuq")]
-position = Vector2(224, 352)
-scale = Vector2(8, 8)
+position = Vector2(192, 224)
 
 [node name="Player" parent="." instance=ExtResource("2_sqsnt")]
-position = Vector2(288, 480)
-scale = Vector2(4, 4)
+position = Vector2(320, 544)
+scale = Vector2(0.5, 0.5)
 
 [node name="StopArea1" type="Node2D" parent="."]
 position = Vector2(544, 960)

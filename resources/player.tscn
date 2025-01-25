@@ -1,11 +1,33 @@
-[gd_scene load_steps=2 format=3 uid="uid://equok5cjqcqu"]
+[gd_scene load_steps=6 format=3 uid="uid://equok5cjqcqu"]
 
-[ext_resource type="Texture2D" uid="uid://cg7hd105yskck" path="res://assets/rogues.png" id="1_i2ufr"]
+[ext_resource type="Script" path="res://resources/player.gd" id="1_dvdog"]
+[ext_resource type="Texture2D" uid="uid://cqaqoyg00suvt" path="res://assets/walking-cycle.png" id="1_tg150"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wp00j"]
+atlas = ExtResource("1_tg150")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ejuji"]
+atlas = ExtResource("1_tg150")
+region = Rect2(256, 0, 256, 256)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_begpe"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wp00j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ejuji")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Player" type="Node2D"]
+script = ExtResource("1_dvdog")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(16, 16)
-texture = ExtResource("1_i2ufr")
-region_enabled = true
-region_rect = Rect2(32, 128, 32, 32)
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_begpe")
+frame_progress = 0.851506

@@ -1,15 +1,18 @@
 class_name Player extends Node2D
 
 @onready var oxygen_levels := 100
-@onready var game_area: TileMapLayer = $"../GameArea"
 @onready var oxygen_level: RichTextLabel = $"../Visuals/HUD/OxygenLevel"
+@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
 var target_position: Vector2i
 var playable_area: Array
+var game_area : TileMapLayer
 
 signal player_moved(player_position: Vector2i)
 
 func _ready() -> void:
+	animated_sprite_2d.play()
+	game_area = get_tree().get_first_node_in_group("game_area")
 	playable_area = game_area.get_used_cells()
 
 func _process(delta: float) -> void:

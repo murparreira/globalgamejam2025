@@ -13,6 +13,8 @@ var current_selected_city : City
 
 func _ready() -> void:
 	interact_label.visible = false
+	player.move_to_cell(Vector2i(1, 7))
+	player.animated_sprite_2d.play()
 	player.player_moved.connect(_on_player_moved)
 	var cities = get_tree().get_nodes_in_group("cities")
 	for city in cities:
@@ -53,7 +55,6 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_accept"):
 		if current_selected_city != null:
 			print("SPACEBAR pressed in city: ", current_selected_city.name)
-			# Add your logic for what happens when SPACEBAR is pressed in a city
 			SceneManager.swap_scenes("res://minigame.tscn", get_tree().root, self, "fade_to_black")
 		else:
 			print("SPACEBAR pressed, but not in a city.")
