@@ -7,6 +7,8 @@ class_name Player extends Node2D
 var target_position: Vector2i
 var playable_area: Array
 
+signal player_moved(player_position: Vector2i)
+
 func _ready() -> void:
 	playable_area = game_area.get_used_cells()
 
@@ -33,6 +35,8 @@ func move_to_cell(direction: Vector2i) -> void:
 	
 	if !playable_area.has(target_grid_position):
 		return
+
+	player_moved.emit(target_grid_position)
 
 	global_position = game_area.map_to_local(target_grid_position)
 	global_position.x -= 16

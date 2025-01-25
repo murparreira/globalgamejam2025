@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://3kgshpypy3rm"]
+
+[ext_resource type="Texture2D" uid="uid://bdeegnt7epvix" path="res://assets/tiles.png" id="1_rq71d"]
+
+[node name="City" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(16, 16)
+texture = ExtResource("1_rq71d")
+region_enabled = true
+region_rect = Rect2(96, 512, 32, 32)
