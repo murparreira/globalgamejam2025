@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://bl6sn53wxsapp"]
+
+[ext_resource type="Texture2D" uid="uid://cuc25xuuyo0ke" path="res://assets/monsters.png" id="1_5o8gd"]
+
+[node name="Obstacle" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_5o8gd")
+offset = Vector2(16, 16)
+region_enabled = true
+region_rect = Rect2(0, 224, 32, 32)

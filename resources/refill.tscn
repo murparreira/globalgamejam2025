@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://disxbvh6giom3"]
+
+[ext_resource type="Texture2D" uid="uid://du5shvjy2jh28" path="res://assets/level3.png" id="1_2jmuv"]
+
+[node name="Refill" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_2jmuv")
+offset = Vector2(16, 16)
