@@ -1,0 +1,108 @@
+[gd_scene load_steps=9 format=3 uid="uid://kwe4yisyu54p"]
+
+[ext_resource type="Script" path="res://minigame.gd" id="1_130j5"]
+[ext_resource type="PackedScene" uid="uid://3kgshpypy3rm" path="res://city.tscn" id="1_h0wuq"]
+[ext_resource type="PackedScene" uid="uid://equok5cjqcqu" path="res://resources/player.tscn" id="2_sqsnt"]
+[ext_resource type="Texture2D" uid="uid://du5shvjy2jh28" path="res://assets/level3.png" id="3_5s7bq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3il7c"]
+size = Vector2(96, 46.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xwatb"]
+size = Vector2(128, 96)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v804l"]
+size = Vector2(64, 96)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g8mc3"]
+
+[node name="minigame" type="Node2D"]
+script = ExtResource("1_130j5")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(1920, 1080)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="City" parent="." instance=ExtResource("1_h0wuq")]
+position = Vector2(224, 352)
+scale = Vector2(8, 8)
+
+[node name="Player" parent="." instance=ExtResource("2_sqsnt")]
+position = Vector2(288, 480)
+scale = Vector2(4, 4)
+
+[node name="StopArea1" type="Node2D" parent="."]
+position = Vector2(544, 960)
+
+[node name="ColorRect" type="ColorRect" parent="StopArea1"]
+offset_left = -64.0
+offset_top = -32.0
+offset_right = 128.0
+offset_bottom = 64.0
+color = Color(0.317846, 0.587195, 0.223951, 1)
+
+[node name="Area2D" type="Area2D" parent="StopArea1"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StopArea1/Area2D"]
+position = Vector2(32, 14.5)
+scale = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_3il7c")
+
+[node name="StopArea2" type="Node2D" parent="."]
+position = Vector2(224, 960)
+
+[node name="ColorRect" type="ColorRect" parent="StopArea2"]
+offset_left = -64.0
+offset_top = -32.0
+offset_right = 64.0
+offset_bottom = 64.0
+color = Color(0.317846, 0.587195, 0.223951, 1)
+
+[node name="Area2D" type="Area2D" parent="StopArea2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StopArea2/Area2D"]
+position = Vector2(0, 16)
+shape = SubResource("RectangleShape2D_xwatb")
+
+[node name="StopArea3" type="Node2D" parent="."]
+position = Vector2(1152, 960)
+
+[node name="ColorRect" type="ColorRect" parent="StopArea3"]
+offset_left = -64.0
+offset_top = -32.0
+offset_bottom = 64.0
+color = Color(0.317846, 0.587195, 0.223951, 1)
+
+[node name="Area2D" type="Area2D" parent="StopArea3"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StopArea3/Area2D"]
+position = Vector2(-32, 16)
+shape = SubResource("RectangleShape2D_v804l")
+
+[node name="Arrow" type="Node2D" parent="."]
+position = Vector2(1408, 960)
+
+[node name="Sprite2D" type="Sprite2D" parent="Arrow"]
+scale = Vector2(8, 8)
+texture = ExtResource("3_5s7bq")
+
+[node name="Area2D" type="Area2D" parent="Arrow"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Arrow/Area2D"]
+scale = Vector2(5, 5)
+shape = SubResource("RectangleShape2D_g8mc3")
+
+[node name="GameOverLabel" type="RichTextLabel" parent="."]
+offset_left = 800.0
+offset_top = 512.0
+offset_right = 1312.0
+offset_bottom = 640.0
+theme_override_font_sizes/normal_font_size = 50
+text = "YOU WIN!!!"
