@@ -14,7 +14,12 @@ var data = {
 					'completed': false
 				}
 			},
-			'tube': false
+			'tubes': {
+				'tube_1': {
+					'node': null,
+					'completed': false
+				}
+			}
 		},
 		'level_2': {
 			'cities': {
@@ -31,7 +36,12 @@ var data = {
 					'completed': false
 				}
 			},
-			'tube': false
+			'tubes': {
+				'tube_1': {
+					'node': null,
+					'completed': false
+				}
+			}
 		},
 		'level_3': {
 			'cities': {
@@ -56,7 +66,16 @@ var data = {
 					'completed': false
 				}
 			},
-			'tube': false
+			'tubes': {
+				'tube_1': {
+					'node': null,
+					'completed': false
+				},
+				'tube_2': {
+					'node': null,
+					'completed': false
+				}
+			}
 		}
 	}
 }

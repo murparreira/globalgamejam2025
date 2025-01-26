@@ -1,6 +1,7 @@
 class_name Tube extends Node2D
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+@export var tube_name: String = 'tube_1'
 
 var playable_area: Array
 var game_area : TileMapLayer

@@ -12,7 +12,7 @@ offset_top = 139.0
 offset_right = 1654.0
 offset_bottom = 179.0
 bbcode_enabled = true
-text = "[center]press [b]space[/b] to enter city[/center]"
+text = "[center]aperte [b]ESPAÇO[/b] para entar[/center]"
 fit_content = true
 
 [node name="PanelContainer" type="PanelContainer" parent="."]

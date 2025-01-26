@@ -5,7 +5,7 @@ extends Node2D
 
 var intro_texts: Array = [
 	"Há 20 anos ocorreu um acidente nuclear que culminou na contaminação de pessoas, animais, plantas, solo, água e ar. Houve danos irreversíveis, deixando sequelas por todo o lado.",
-	"Mesmo com a devastação, os sobreviventes se reuniram em pequenas grupos com o suporte do governo e construíram locais seguros, com a utilização de cúpulas para morar, preparados para as atuais intempéries.",
+	"Mesmo com a devastação, os sobreviventes se reuniram em pequenos grupos com o suporte do governo e construíram locais seguros, com a utilização de cúpulas para morar, preparados para as atuais intempéries.",
 	"Nesse ambiente, já em 2022, encontramos nosso personagem, funcionário público, em seu primeiro mês de trabalho.\n\nEle precisa realizar entregas nas cidades sinalizadas, utilizando seu cilindro de O2, para se locomover fora da cúpula. Você deve procurar o trajeto mais adequado e otimizável. Mas lembre-se, durante o trajeto terá locais para reabastecer o cilindro de O2.\n\nCuidado para não ficar sem a..a..a..a.ar.",
 ]
 
@@ -43,7 +43,7 @@ func show_next_text() -> void:
 	await current_tween.finished
 	var seconds = 2.0
 	if current_text_index == 2:
-		seconds = 4.0
+		seconds = 6.0
 	await get_tree().create_timer(seconds).timeout
 	current_text_index += 1
 	show_next_text()

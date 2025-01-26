@@ -121,6 +121,7 @@ func check_minigame_over() -> void:
 		if ball.key != "-" and ball.position.x > -100:  # Skip missing balls
 			return
 
+	GameData.data['levels'][GameData.data['current_level']]['tubes'][GameData.data['current_minigame_tube']]['completed'] = true
 	# If all balls have passed, set minigame_over to true
 	minigame_over = true
 	print("Minigame over! Press SPACEBAR to continue.")

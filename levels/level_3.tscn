@@ -84,10 +84,11 @@ city_sprite = ExtResource("9_6a3fp")
 
 [node name="HUD" parent="." instance=ExtResource("5_7vqah")]
 
-[node name="Tube" parent="." instance=ExtResource("6_jf0wc")]
+[node name="Tube" parent="." groups=["tubes"] instance=ExtResource("6_jf0wc")]
 position = Vector2(-256, 512)
 scale = Vector2(0.25, 0.25)
 
-[node name="Tube2" parent="." instance=ExtResource("6_jf0wc")]
+[node name="Tube2" parent="." groups=["tubes"] instance=ExtResource("6_jf0wc")]
 position = Vector2(-256, 512)
 scale = Vector2(0.25, 0.25)
+tube_name = "tube_2"

@@ -55,4 +55,4 @@ offset_bottom = -88.0
 grow_horizontal = 2
 grow_vertical = 0
 bbcode_enabled = true
-text = "[center]press [b]space[/b] to fast forward[/center]"
+text = "[center]aperte [b]ESPAÇO[/b] para avançar a conversa[/center]"

@@ -11,6 +11,7 @@ extends Node2D
 var tree_scene = preload("res://scenes/tree.tscn")
 
 var cities_positions: Array = []
+var tubes_positions: Array = []
 var current_selected_city: City
 var current_selected_tube: Tube
 
@@ -39,6 +40,7 @@ func initialize_game() -> void:
 
 func initialize_cities() -> void:
 	var cities = get_tree().get_nodes_in_group("cities")
+	var tubes = get_tree().get_nodes_in_group("tubes")
 	for i in 10:
 		var tree_instance = tree_scene.instantiate() as SpriteTree
 		add_child(tree_instance)
@@ -46,6 +48,15 @@ func initialize_cities() -> void:
 		var random_cell = game_area.get_used_cells().pick_random() + [Vector2i(0, 1), Vector2i(0, -1), Vector2i(1, 1), Vector2i(1, -1), Vector2i(-1, 0), Vector2i(-1, 1)].pick_random()
 		print("Tree positioned in: " + str(random_cell))
 		tree_instance.move_to_cell(random_cell)
+
+	for vtube in tubes:
+		tubes_positions.append({
+			"position": game_area.local_to_map(vtube.position),
+			"tube": vtube
+		})
+		if GameData.data['levels']['level_3']['tubes'][vtube.tube_name]['completed']:
+			vtube.animated_sprite_2d.material = ShaderMaterial.new()
+			vtube.animated_sprite_2d.material.shader = load("res://bw.gdshader")
 
 	for city in cities:
 		cities_positions.append({
@@ -67,11 +78,13 @@ func update_oxygen_display() -> void:
 		hud.o_2_label_value.text = str(GameData.data["current_oxygen"])
 
 func check_tube_collision(player_position: Vector2i) -> void:
-	if game_area.local_to_map(tube.position) == player_position:
-		hud.hint_label.visible = true
-		current_selected_tube = tube
-		print("Selected Tube: ", current_selected_tube.name)
-		return
+	for tube_data in tubes_positions:
+		if tube_data["position"] == player_position:
+			hud.hint_label.visible = true
+			current_selected_tube = tube
+			print("Selected Tube: ", current_selected_tube.name)
+			return
+
 	current_selected_tube = null
 
 func check_city_collision(player_position: Vector2i) -> void:
@@ -106,9 +119,9 @@ func handle_accept_input() -> void:
 		print("SPACEBAR pressed, but not in a city or tube.")
 
 func handle_tube_interaction() -> void:
-	if !GameData.data['levels']['level_3']['tube']:
-		print("SPACEBAR pressed in tube: ", current_selected_tube.name)
-		GameData.data['current_minigame_tube'] = current_selected_tube.name
+	if !GameData.data['levels']['level_3']['tubes'][current_selected_tube.tube_name]['completed']:
+		print("SPACEBAR pressed in tube: ", current_selected_tube.tube_name)
+		GameData.data['current_minigame_tube'] = current_selected_tube.tube_name
 		SceneManager.swap_scenes("res://levels/minigame_tube.tscn", get_tree().root, self, "fade_to_black")
 
 func handle_city_interaction() -> void:

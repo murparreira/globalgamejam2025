@@ -72,7 +72,7 @@ position = Vector2(137, 1524)
 [node name="City" parent="." groups=["cities"] instance=ExtResource("3_m071i")]
 position = Vector2(768, 0)
 
-[node name="Tube" parent="." instance=ExtResource("8_1e7k1")]
+[node name="Tube" parent="." groups=["tubes"] instance=ExtResource("8_1e7k1")]
 position = Vector2(423, 1523)
 
 [node name="HUD" parent="." instance=ExtResource("8_p6qw6")]
