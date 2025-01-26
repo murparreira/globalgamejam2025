@@ -44,6 +44,9 @@ var hint_tween: Tween  # Store the tween for the hint label
 # Track which balls have been scored
 var scored_balls: Array[Ball] = []
 
+var button_a = preload("res://assets/button-a.png")
+var button_d = preload("res://assets/button-d.png")
+
 func _ready() -> void:
 	hint_label.visible = false
 	var patterns: Array[Array] = [
@@ -61,6 +64,10 @@ func _ready() -> void:
 	var sample_keys = patterns.pick_random()
 	for i in range(balls.size()):
 		balls[i].key = sample_keys[i]
+		if balls[i].key == "A":
+			balls[i].sprite_2d.texture = button_a
+		if balls[i].key == "D":
+			balls[i].sprite_2d.texture = button_d
 		if balls[i].key == "-":
 			hide_and_disable_ball(balls[i])
 	

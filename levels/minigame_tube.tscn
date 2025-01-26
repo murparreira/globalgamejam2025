@@ -1,12 +1,12 @@
-[gd_scene load_steps=10 format=3 uid="uid://vy6agxtd8rck"]
+[gd_scene load_steps=10 format=3 uid="uid://eqp80nd7ng4p"]
 
 [ext_resource type="Script" path="res://levels/minigame_tube.gd" id="1_hpo3i"]
 [ext_resource type="Texture2D" uid="uid://dqbqiwvauv843" path="res://assets/background-minigame-tube.png" id="2_sj0hw"]
 [ext_resource type="Texture2D" uid="uid://dv4yeustb38n" path="res://assets/paper.png" id="3_mjpwt"]
-[ext_resource type="PackedScene" path="res://tube.tscn" id="3_qs0rj"]
+[ext_resource type="PackedScene" uid="uid://dkrnahxdmts20" path="res://tube.tscn" id="3_qs0rj"]
 [ext_resource type="Texture2D" uid="uid://dpalhoj4y210r" path="res://assets/arrow.png" id="4_oiynf"]
 [ext_resource type="PackedScene" uid="uid://equok5cjqcqu" path="res://scenes/player.tscn" id="4_vvodp"]
-[ext_resource type="PackedScene" uid="uid://ddueid4ri0d6r" path="res://scenes/ball.tscn" id="6_fxgxg"]
+[ext_resource type="PackedScene" uid="uid://uihil4g51lfy" path="res://scenes/ball.tscn" id="6_fxgxg"]
 [ext_resource type="Texture2D" uid="uid://dsrihi7l7lt8p" path="res://assets/button-ad.png" id="7_3h2pb"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5j884"]
