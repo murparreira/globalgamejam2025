@@ -16,7 +16,7 @@ radius = 108.791
 script = ExtResource("1_hpo3i")
 
 [node name="HintLabel" type="RichTextLabel" parent="."]
-z_index = 99
+z_index = 1000
 custom_minimum_size = Vector2(1920, 0)
 offset_top = 768.0
 offset_right = 1920.0
@@ -28,7 +28,7 @@ text = "[center]press [b]space[/b] to continue"
 fit_content = true
 
 [node name="ResultLabel" type="RichTextLabel" parent="."]
-z_index = 99
+z_index = 1000
 custom_minimum_size = Vector2(1920, 0)
 offset_top = 640.0
 offset_right = 1920.0
@@ -127,3 +127,10 @@ key = "A"
 [node name="Timer" type="Timer" parent="."]
 wait_time = 2.0
 autostart = true
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = 999
+custom_minimum_size = Vector2(1920, 1080)
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0.156863, 0.156863, 0.156863, 0.835294)

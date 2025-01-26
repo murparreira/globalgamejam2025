@@ -3,6 +3,7 @@ extends Node2D
 @onready var arrow: Node2D = $GameContainer/Arrow
 @onready var arrow_collider: Area2D = $GameContainer/Arrow/Area2D
 @onready var player: Player = $Player
+@onready var color_rect: ColorRect = $ColorRect
 
 @onready var game_over_label: RichTextLabel = $GameOverLabel
 
@@ -21,6 +22,7 @@ signal minigame_ended
 
 func _ready() -> void:
 	minigame_ended.connect(_on_minigame_ended)
+	color_rect.visible = false
 	game_over_label.visible = false
 	arrow.position.x = 10
 
@@ -52,6 +54,7 @@ func _process(delta: float) -> void:
 		# Display the result
 		if !continue_playing:
 			game_over_label.visible = true
+			color_rect.visible = true
 			game_over_label.text = "Bom, não se pode ganhar todas não é mesmo? :(\n\nVocê perdeu 20% do seu oxigênio!"
 			GameData.data["current_oxygen"] -= 20
 			GameData.data['levels'][GameData.data['current_level']]['cities'][GameData.data['current_minigame_city']]['completed'] = false
@@ -59,6 +62,7 @@ func _process(delta: float) -> void:
 		else:
 			if wins.size() == 3:
 				game_over_label.visible = true
+				color_rect.visible = true
 				game_over_label.text = "É isso aí, mais uma entrega feita, bom trabalho. :)"
 				GameData.data['levels'][GameData.data['current_level']]['cities'][GameData.data['current_minigame_city']]['completed'] = true
 				minigame_ended.emit()

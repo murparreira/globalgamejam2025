@@ -34,16 +34,6 @@ scale = Vector2(1.5, 1.5)
 position = Vector2(299, 402)
 movement_enabled = false
 
-[node name="GameOverLabel" type="RichTextLabel" parent="."]
-custom_minimum_size = Vector2(640, 0)
-offset_left = 800.0
-offset_top = 512.0
-offset_right = 1312.0
-offset_bottom = 640.0
-theme_override_font_sizes/normal_font_size = 30
-bbcode_enabled = true
-fit_content = true
-
 [node name="GameContainer" type="Node2D" parent="."]
 
 [node name="StopArea1" type="Node2D" parent="GameContainer"]
@@ -122,3 +112,23 @@ Ass: outro funcionario"
 [node name="Sprite2D3" type="Sprite2D" parent="."]
 position = Vector2(1624, 416)
 texture = ExtResource("7_w1gqw")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = 999
+custom_minimum_size = Vector2(1920, 1080)
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0.156863, 0.156863, 0.156863, 0.835294)
+
+[node name="GameOverLabel" type="RichTextLabel" parent="."]
+z_index = 1000
+custom_minimum_size = Vector2(640, 0)
+offset_left = 548.0
+offset_top = 420.0
+offset_right = 1188.0
+offset_bottom = 548.0
+scale = Vector2(1.39402, 2.62371)
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = "Bom, não se pode ganhar todas não é mesmo? :(\\n\\nVocê perdeu 20% do seu oxigênio!"
+fit_content = true

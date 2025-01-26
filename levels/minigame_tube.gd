@@ -1,5 +1,6 @@
 extends Node2D
 
+@onready var color_rect: ColorRect = $ColorRect
 @onready var result_label: RichTextLabel = $ResultLabel
 @onready var hint_label: RichTextLabel = $HintLabel
 @onready var contact_area: Area2D = $ContactArea
@@ -48,6 +49,7 @@ var button_a = preload("res://assets/button-a.png")
 var button_d = preload("res://assets/button-d.png")
 
 func _ready() -> void:
+	color_rect.visible = false
 	hint_label.visible = false
 	var patterns: Array[Array] = [
 		["D", "-", "A", "A", "-", "D", "D", "D", "A", "-"],
@@ -132,6 +134,7 @@ func start_hint_blink() -> void:
 		return  # If the tween is already running, do nothing
 
 	is_hint_blinking = true
+	color_rect.visible = true
 	hint_label.visible = true
 
 	var blink_duration: float = 1.0
