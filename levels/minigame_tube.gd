@@ -41,6 +41,9 @@ var minigame_over: bool = false
 var is_hint_blinking: bool = false
 var hint_tween: Tween  # Store the tween for the hint label
 
+# Track which balls have been scored
+var scored_balls: Array[Ball] = []
+
 func _ready() -> void:
 	hint_label.visible = false
 	var sample_keys = ['A', 'D', 'A', 'D', 'A', 'D', 'A', 'D', 'A', 'D']
@@ -123,9 +126,10 @@ func _process(delta: float) -> void:
 
 func check_ball_input(input_key: String) -> void:
 	for ball in balls:
-		if contact_area.overlaps_area(ball) and ball.key == input_key:
+		if contact_area.overlaps_area(ball) and ball.key == input_key and not ball in scored_balls:
 			print("Correct input! Ball matched: ", ball.name)
 			correct_balls += 1
+			scored_balls.append(ball)  # Mark the ball as scored
 			update_oxygen_cylinder()
 			disable_ball_collider(ball)  # Disable the collider immediately
 			break
