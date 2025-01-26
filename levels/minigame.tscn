@@ -1,10 +1,12 @@
-[gd_scene load_steps=10 format=3 uid="uid://kwe4yisyu54p"]
+[gd_scene load_steps=12 format=3 uid="uid://kwe4yisyu54p"]
 
 [ext_resource type="Script" path="res://levels/minigame.gd" id="1_130j5"]
 [ext_resource type="PackedScene" uid="uid://3kgshpypy3rm" path="res://scenes/city.tscn" id="1_h0wuq"]
-[ext_resource type="Texture2D" uid="uid://dpkbp2vbvd8j1" path="res://assets/background.png" id="2_6n5ls"]
+[ext_resource type="Texture2D" uid="uid://k4ch1g7k6y66" path="res://assets/background-minigame-fishing.png" id="2_5ly5k"]
 [ext_resource type="PackedScene" uid="uid://equok5cjqcqu" path="res://scenes/player.tscn" id="2_sqsnt"]
-[ext_resource type="Texture2D" uid="uid://du5shvjy2jh28" path="res://assets/level3.png" id="3_5s7bq"]
+[ext_resource type="Texture2D" uid="uid://deb1f8agvbuxe" path="res://assets/indicador-minigame.png" id="5_qbonj"]
+[ext_resource type="Texture2D" uid="uid://dv4yeustb38n" path="res://assets/paper.png" id="6_ee805"]
+[ext_resource type="Texture2D" uid="uid://dpalhoj4y210r" path="res://assets/arrow.png" id="7_w1gqw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3il7c"]
 size = Vector2(96, 46.5)
@@ -22,14 +24,14 @@ script = ExtResource("1_130j5")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(960, 544)
-texture = ExtResource("2_6n5ls")
+texture = ExtResource("2_5ly5k")
 
 [node name="City" parent="." instance=ExtResource("1_h0wuq")]
-position = Vector2(192, 64)
-scale = Vector2(2, 2)
+position = Vector2(294, 117)
+scale = Vector2(1.5, 1.5)
 
 [node name="Player" parent="." instance=ExtResource("2_sqsnt")]
-position = Vector2(256, 576)
+position = Vector2(299, 402)
 movement_enabled = false
 
 [node name="GameOverLabel" type="RichTextLabel" parent="."]
@@ -96,11 +98,27 @@ shape = SubResource("RectangleShape2D_v804l")
 position = Vector2(1408, 960)
 
 [node name="Sprite2D" type="Sprite2D" parent="GameContainer/Arrow"]
-scale = Vector2(8, 8)
-texture = ExtResource("3_5s7bq")
+texture = ExtResource("5_qbonj")
 
 [node name="Area2D" type="Area2D" parent="GameContainer/Arrow"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GameContainer/Arrow/Area2D"]
 scale = Vector2(5, 5)
 shape = SubResource("RectangleShape2D_g8mc3")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(1660, 683)
+texture = ExtResource("6_ee805")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+modulate = Color(0, 0, 0, 1)
+offset_left = 1611.0
+offset_top = 614.0
+offset_right = 1748.0
+offset_bottom = 786.0
+text = "Pressione os botoes corretos no momento correto.
+Ass: outro funcionario"
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+position = Vector2(1624, 416)
+texture = ExtResource("7_w1gqw")

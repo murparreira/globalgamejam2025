@@ -50,10 +50,11 @@ position = Vector2(1660, 683)
 texture = ExtResource("3_mjpwt")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
-offset_left = 1618.0
+modulate = Color(0, 0, 0, 1)
+offset_left = 1611.0
 offset_top = 614.0
 offset_right = 1748.0
-offset_bottom = 783.0
+offset_bottom = 786.0
 text = "Pressione os botoes corretos no momento correto.
 Ass: outro funcionario"
 
@@ -77,8 +78,8 @@ scale = Vector2(0.504307, 0.584306)
 shape = SubResource("CircleShape2D_5j884")
 
 [node name="Sprite2D" type="Sprite2D" parent="ContactArea"]
-position = Vector2(188, 956)
-scale = Vector2(0.745455, 0.745455)
+position = Vector2(192, 961)
+scale = Vector2(1.09091, 1.09091)
 texture = ExtResource("7_3h2pb")
 
 [node name="GameContainer" type="Node" parent="."]
