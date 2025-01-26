@@ -32,8 +32,9 @@ func _process(delta: float) -> void:
 		move_to_cell(direction)
 
 func move_to_cell(direction: Vector2i) -> void:
-	oxygen_levels -= 1
-	oxygen_level.text = str(oxygen_levels)
+	if oxygen_level != null:
+		oxygen_levels -= 1
+		oxygen_level.text = str(oxygen_levels)
 
 	var current_grid_position = game_area.local_to_map(position)
 	var target_grid_position = current_grid_position + direction
