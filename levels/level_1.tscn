@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://brvcj84qiferm"]
+[gd_scene load_steps=20 format=4 uid="uid://brvcj84qiferm"]
 
 [ext_resource type="Script" path="res://levels/level_1.gd" id="1_mgvb0"]
 [ext_resource type="Texture2D" uid="uid://dpkbp2vbvd8j1" path="res://assets/background.png" id="1_wjda5"]
@@ -9,6 +9,13 @@
 [ext_resource type="PackedScene" uid="uid://bsjkp76ypypxi" path="res://scenes/tree.tscn" id="7_mnhgm"]
 [ext_resource type="PackedScene" uid="uid://dkrnahxdmts20" path="res://tube.tscn" id="8_1e7k1"]
 [ext_resource type="PackedScene" uid="uid://dcvvuo6glqpmy" path="res://scenes/hud.tscn" id="8_p6qw6"]
+[ext_resource type="Texture2D" uid="uid://dtdem37qr1x1b" path="res://assets/pedra1.png" id="10_k15nn"]
+[ext_resource type="Texture2D" uid="uid://cbqgplc7o8ql5" path="res://assets/pedra2.png" id="11_psq0n"]
+[ext_resource type="Texture2D" uid="uid://b7ttrm6y6g2uc" path="res://assets/mato2.png" id="12_k6qa7"]
+[ext_resource type="Texture2D" uid="uid://nj36ry8d4508" path="res://assets/mato1.png" id="13_4g03v"]
+[ext_resource type="Texture2D" uid="uid://cok3kb8sshi8u" path="res://assets/esqueleto.png" id="14_e1lwy"]
+[ext_resource type="Texture2D" uid="uid://gqsf6gf1rbhn" path="res://assets/carro.png" id="15_pllga"]
+[ext_resource type="Texture2D" uid="uid://dnep52vataq4g" path="res://assets/cidade-fantasma.png" id="16_okx2w"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qeedj"]
 texture = ExtResource("3_e0xso")
@@ -94,3 +101,45 @@ position = Vector2(98, 193)
 
 [node name="SpriteTree6" parent="." instance=ExtResource("7_mnhgm")]
 position = Vector2(1668, 164)
+
+[node name="Pedra01" type="Sprite2D" parent="."]
+position = Vector2(504, 775)
+texture = ExtResource("10_k15nn")
+
+[node name="Pedra02" type="Sprite2D" parent="."]
+position = Vector2(1273, 768)
+texture = ExtResource("11_psq0n")
+
+[node name="Mato02" type="Sprite2D" parent="."]
+position = Vector2(1125, 249)
+texture = ExtResource("12_k6qa7")
+
+[node name="Mato01" type="Sprite2D" parent="."]
+position = Vector2(525, 503)
+texture = ExtResource("13_4g03v")
+
+[node name="Esqueletinho" type="Sprite2D" parent="."]
+position = Vector2(158, 993)
+texture = ExtResource("14_e1lwy")
+
+[node name="Carro" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(842, 756)
+texture = ExtResource("15_pllga")
+
+[node name="CidadeFantasma" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(150, 790)
+texture = ExtResource("16_okx2w")
+
+[node name="Mato03" type="Sprite2D" parent="."]
+position = Vector2(774, 762)
+texture = ExtResource("12_k6qa7")
+
+[node name="Pedra03" type="Sprite2D" parent="."]
+position = Vector2(1534, 250)
+texture = ExtResource("11_psq0n")
+
+[node name="Mato04" type="Sprite2D" parent="."]
+position = Vector2(1757, 566)
+texture = ExtResource("13_4g03v")
