@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://bhfnfw82k8y2n"]
+[gd_scene load_steps=23 format=4 uid="uid://bhfnfw82k8y2n"]
 
 [ext_resource type="Script" path="res://levels/level_3.gd" id="1_7wlg7"]
 [ext_resource type="Texture2D" uid="uid://dpkbp2vbvd8j1" path="res://assets/background.png" id="1_bjrhh"]
@@ -12,6 +12,14 @@
 [ext_resource type="Texture2D" uid="uid://cjbw3kqttjj8h" path="res://assets/cidade3.png" id="7_r5uup"]
 [ext_resource type="Texture2D" uid="uid://c082fmsr1br4t" path="res://assets/cidade4.png" id="8_1eu8r"]
 [ext_resource type="Texture2D" uid="uid://b7xsup5ys6q2p" path="res://assets/cidade5.png" id="9_6a3fp"]
+[ext_resource type="Texture2D" uid="uid://dtdem37qr1x1b" path="res://assets/pedra1.png" id="13_0mptk"]
+[ext_resource type="Texture2D" uid="uid://2o0gqxnu82t1" path="res://assets/arvore2.png" id="14_gx3d2"]
+[ext_resource type="Texture2D" uid="uid://nj36ry8d4508" path="res://assets/mato1.png" id="15_nhkw3"]
+[ext_resource type="Texture2D" uid="uid://cbqgplc7o8ql5" path="res://assets/pedra2.png" id="16_w1jiw"]
+[ext_resource type="Texture2D" uid="uid://gqsf6gf1rbhn" path="res://assets/carro.png" id="17_vphir"]
+[ext_resource type="Texture2D" uid="uid://cok3kb8sshi8u" path="res://assets/esqueleto.png" id="18_bc83d"]
+[ext_resource type="Texture2D" uid="uid://dnep52vataq4g" path="res://assets/cidade-fantasma.png" id="19_ym8cb"]
+[ext_resource type="Texture2D" uid="uid://b7ttrm6y6g2uc" path="res://assets/mato2.png" id="20_4jeib"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1apsc"]
 texture = ExtResource("2_6euyr")
@@ -92,3 +100,148 @@ scale = Vector2(0.25, 0.25)
 position = Vector2(-256, 512)
 scale = Vector2(0.25, 0.25)
 tube_name = "tube_2"
+
+[node name="Pedra01" type="Sprite2D" parent="."]
+position = Vector2(430, 621)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("13_0mptk")
+
+[node name="arvore06" type="Sprite2D" parent="."]
+position = Vector2(1454, 721)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("14_gx3d2")
+
+[node name="Mato07" type="Sprite2D" parent="."]
+position = Vector2(723, 228)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("15_nhkw3")
+
+[node name="Mato08" type="Sprite2D" parent="."]
+position = Vector2(878, 761)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("15_nhkw3")
+
+[node name="Pedra03" type="Sprite2D" parent="."]
+position = Vector2(1298, 276)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("16_w1jiw")
+
+[node name="Carro" type="Sprite2D" parent="."]
+position = Vector2(1010, 403)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("17_vphir")
+
+[node name="Esqueletinho" type="Sprite2D" parent="."]
+position = Vector2(562, 529)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("18_bc83d")
+
+[node name="CidadeFantasma" type="Sprite2D" parent="."]
+position = Vector2(1189, 778)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("19_ym8cb")
+
+[node name="CidadeFantasma2" type="Sprite2D" parent="."]
+position = Vector2(280, 151)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("19_ym8cb")
+
+[node name="Mato03" type="Sprite2D" parent="."]
+position = Vector2(688, 624)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("20_4jeib")
+
+[node name="Pedra02" type="Sprite2D" parent="."]
+position = Vector2(430, 621)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("13_0mptk")
+
+[node name="Mato04" type="Sprite2D" parent="."]
+position = Vector2(308, 723)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("20_4jeib")
+
+[node name="Mato05" type="Sprite2D" parent="."]
+position = Vector2(1200, 301)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("20_4jeib")
+
+[node name="Pedra04" type="Sprite2D" parent="."]
+position = Vector2(978, 672)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("16_w1jiw")
+
+[node name="arvore07" type="Sprite2D" parent="."]
+position = Vector2(1489, 367)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("14_gx3d2")
+
+[node name="Mato06" type="Sprite2D" parent="."]
+position = Vector2(968, 173)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("20_4jeib")
+
+[node name="Pedra05" type="Sprite2D" parent="."]
+position = Vector2(683, 723)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("16_w1jiw")
+
+[node name="Mato09" type="Sprite2D" parent="."]
+position = Vector2(338, 403)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("20_4jeib")
+
+[node name="Carro2" type="Sprite2D" parent="."]
+position = Vector2(470, 45)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("17_vphir")
+
+[node name="Pedra06" type="Sprite2D" parent="."]
+position = Vector2(1554, 848)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("16_w1jiw")
+
+[node name="Mato10" type="Sprite2D" parent="."]
+position = Vector2(501, 865)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("20_4jeib")
+
+[node name="Pedra07" type="Sprite2D" parent="."]
+position = Vector2(1115, 926)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("16_w1jiw")
+
+[node name="Esqueletinho2" type="Sprite2D" parent="."]
+position = Vector2(1753, 489)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("18_bc83d")
+
+[node name="arvore08" type="Sprite2D" parent="."]
+position = Vector2(1596, 575)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("14_gx3d2")
+
+[node name="arvore09" type="Sprite2D" parent="."]
+position = Vector2(204, 477)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("14_gx3d2")
+
+[node name="Mato11" type="Sprite2D" parent="."]
+position = Vector2(458, 175)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("20_4jeib")
+
+[node name="Pedra08" type="Sprite2D" parent="."]
+position = Vector2(1141, 93)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("16_w1jiw")
+
+[node name="Mato12" type="Sprite2D" parent="."]
+position = Vector2(197, 894)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("15_nhkw3")
+
+[node name="Pedra09" type="Sprite2D" parent="."]
+position = Vector2(1750, 921)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("13_0mptk")
