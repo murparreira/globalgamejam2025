@@ -13,6 +13,8 @@ signal player_moved(player_position: Vector2i)
 func _ready() -> void:
 	animated_sprite_2d.play()
 	game_area = get_tree().get_first_node_in_group("game_area")
+	if game_area == null:
+		return
 	playable_area = game_area.get_used_cells()
 
 func _process(delta: float) -> void:

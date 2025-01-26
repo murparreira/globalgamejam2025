@@ -17,7 +17,7 @@ size = Vector2(64, 96)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g8mc3"]
 
-[node name="minigame" type="Node2D"]
+[node name="Minigame" type="Node2D"]
 script = ExtResource("1_130j5")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
