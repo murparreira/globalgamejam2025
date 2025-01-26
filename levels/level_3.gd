@@ -4,6 +4,8 @@ extends Node2D
 @onready var player: Player = $Player
 @onready var city: Node2D = $City
 @onready var tube: Tube = $Tube
+@onready var tube_2: Tube = $Tube2
+
 @onready var hud: CanvasLayer = $HUD
 
 var tree_scene = preload("res://scenes/tree.tscn")
@@ -13,15 +15,16 @@ var current_selected_city: City
 var current_selected_tube: Tube
 
 func _ready() -> void:
-	GameData.data["current_level"] = 'level_2'
+	GameData.data["current_level"] = 'level_3'
 	initialize_game()
 
 func initialize_game() -> void:
 	# Set up tube and player positions
-	tube.set_starting_position(Vector2i(1, 6))
+	tube.set_starting_position(Vector2i(23, 12))
+	tube_2.set_starting_position(Vector2i(14, 7))
 	var player_starting_position = GameData.data.get('current_player_position', Vector2i(0, 3))
 	if player_starting_position == null:
-		player_starting_position = Vector2i(4, 4)
+		player_starting_position = Vector2i(0, 6)
 	player.set_starting_position(player_starting_position)
 	hud.o_2_label_value.text = str(GameData.data.get('current_oxygen', 0))
 
@@ -49,7 +52,7 @@ func initialize_cities() -> void:
 			"position": game_area.local_to_map(city.position),
 			"city": city
 		})
-		if GameData.data['levels']['level_2']['cities'][city.city_name]['completed']:
+		if GameData.data['levels']['level_3']['cities'][city.city_name]['completed']:
 			city.sprite_2d.material = ShaderMaterial.new()
 			city.sprite_2d.material.shader = load("res://bw.gdshader")
 
@@ -103,20 +106,20 @@ func handle_accept_input() -> void:
 		print("SPACEBAR pressed, but not in a city or tube.")
 
 func handle_tube_interaction() -> void:
-	if !GameData.data['levels']['level_2']['tube']:
+	if !GameData.data['levels']['level_3']['tube']:
 		print("SPACEBAR pressed in tube: ", current_selected_tube.name)
 		GameData.data['current_minigame_tube'] = current_selected_tube.name
 		SceneManager.swap_scenes("res://levels/minigame_tube.tscn", get_tree().root, self, "fade_to_black")
 
 func handle_city_interaction() -> void:
-	if !GameData.data['levels']['level_2']['cities'][current_selected_city.city_name]['completed']:
+	if !GameData.data['levels']['level_3']['cities'][current_selected_city.city_name]['completed']:
 		print("SPACEBAR pressed in city: ", current_selected_city.city_name)
 		GameData.data['current_minigame_city'] = current_selected_city.city_name
 		SceneManager.swap_scenes("res://levels/minigame.tscn", get_tree().root, self, "fade_to_black")
 
 func check_all_cities_cleared() -> bool:
 	for city_data in cities_positions:
-		if !GameData.data['levels']['level_2']['cities'][city_data["city"].city_name]['completed']:
+		if !GameData.data['levels']['level_3']['cities'][city_data["city"].city_name]['completed']:
 			return false
 	return true
 
@@ -124,7 +127,7 @@ func _process(delta: float) -> void:
 	# Check if all cities are cleared
 	if check_all_cities_cleared():
 		GameData.set_defaults()
-		GameData.data['current_level'] = 'level_2'
+		GameData.data['current_level'] = 'level_3'
 		print("All cities cleared! Proceeding to the next level...")
 		SceneManager.swap_scenes("res://levels/loading_level.tscn", get_tree().root, self, "fade_to_black")
 

@@ -1,0 +1,93 @@
+[gd_scene load_steps=15 format=4 uid="uid://bhfnfw82k8y2n"]
+
+[ext_resource type="Script" path="res://levels/level_3.gd" id="1_7wlg7"]
+[ext_resource type="Texture2D" uid="uid://dpkbp2vbvd8j1" path="res://assets/background.png" id="1_bjrhh"]
+[ext_resource type="Texture2D" uid="uid://hwr3a4px1ir" path="res://assets/tilemap-road-v2.png" id="2_6euyr"]
+[ext_resource type="PackedScene" uid="uid://equok5cjqcqu" path="res://scenes/player.tscn" id="3_tgow2"]
+[ext_resource type="PackedScene" uid="uid://3kgshpypy3rm" path="res://scenes/city.tscn" id="4_50icn"]
+[ext_resource type="PackedScene" uid="uid://dcvvuo6glqpmy" path="res://scenes/hud.tscn" id="5_7vqah"]
+[ext_resource type="Texture2D" uid="uid://chw0q3ywk7skp" path="res://assets/cidade1.png" id="5_j3oy1"]
+[ext_resource type="Texture2D" uid="uid://bgllcqbsh6ahk" path="res://assets/cidade2.png" id="6_h8rmn"]
+[ext_resource type="PackedScene" uid="uid://dkrnahxdmts20" path="res://tube.tscn" id="6_jf0wc"]
+[ext_resource type="Texture2D" uid="uid://cjbw3kqttjj8h" path="res://assets/cidade3.png" id="7_r5uup"]
+[ext_resource type="Texture2D" uid="uid://c082fmsr1br4t" path="res://assets/cidade4.png" id="8_1eu8r"]
+[ext_resource type="Texture2D" uid="uid://b7xsup5ys6q2p" path="res://assets/cidade5.png" id="9_6a3fp"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1apsc"]
+texture = ExtResource("2_6euyr")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+0:4/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_bf2cq"]
+tile_size = Vector2i(64, 64)
+sources/1 = SubResource("TileSetAtlasSource_1apsc")
+
+[node name="Level3" type="Node2D"]
+script = ExtResource("1_7wlg7")
+
+[node name="Visuals" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Visuals"]
+position = Vector2(960, 541)
+texture = ExtResource("1_bjrhh")
+
+[node name="GameArea" type="TileMapLayer" parent="Visuals" groups=["game_area"]]
+tile_map_data = PackedByteArray("AAADAAEAAQAAAAEAAAAEAAEAAQABAAEAAAAFAAEAAQABAAEAAAAGAAEAAQABAAEAAAAHAAEAAQABAAEAAAAIAAEAAQABAAEAAAAJAAEAAQABAAEAAAAKAAEAAQACAAEAAAAAAAYAAQAAAAQAAAABAAYAAQABAAEAAAACAAYAAQABAAEAAAADAAYAAQACAAIAAAADAAUAAQABAAAAAAADAAQAAQABAAAAAAADAAMAAQABAAAAAAADAAIAAQABAAAAAAAKAAIAAQABAAAAAAAKAAMAAQABAAAAAAAKAAQAAQABAAAAAAAKAAUAAQACAAIAAAAJAAUAAQABAAEAAAAIAAUAAQABAAEAAAAHAAUAAQAAAAEAAAAHAAYAAQABAAAAAAAHAAcAAQAAAAMAAAAHAAgAAQABAAAAAAAHAAkAAQABAAAAAAAHAAoAAQABAAMAAAAGAAoAAQABAAEAAAAFAAoAAQABAAEAAAAEAAoAAQABAAEAAAADAAoAAQAAAAQAAAAIAAoAAQABAAEAAAAJAAoAAQABAAEAAAAKAAoAAQABAAEAAAALAAoAAQACAAMAAAAIAAcAAQABAAEAAAAJAAcAAQABAAEAAAAKAAcAAQABAAEAAAALAAcAAQABAAIAAAALAAkAAQABAAAAAAALAAgAAQABAAAAAAALAAsAAQABAAAAAAALAAwAAQABAAAAAAALAA0AAQABAAAAAAALAA4AAQAAAAIAAAAMAA4AAQABAAEAAAANAA4AAQABAAEAAAAOAA4AAQACAAIAAAAOAA0AAQABAAAAAAAOAAwAAQABAAAAAAAOAAsAAQABAAAAAAAOAAoAAQABAAAAAAAOAAkAAQABAAAAAAAOAAgAAQABAAAAAAAOAAcAAQACAAMAAAAMAAcAAQABAAEAAAANAAcAAQABAAEAAAAOAAYAAQABAAAAAAAOAAUAAQABAAIAAAANAAUAAQABAAEAAAAMAAUAAQAAAAIAAAAMAAQAAQABAAAAAAAMAAMAAQAAAAEAAAANAAMAAQABAAEAAAAOAAMAAQABAAEAAAAPAAMAAQABAAEAAAAQAAMAAQABAAEAAAARAAMAAQABAAEAAAASAAMAAQABAAEAAAATAAMAAQABAAQAAAATAAIAAQABAAAAAAATAAEAAQAAAAEAAAAUAAEAAQABAAEAAAAVAAEAAQABAAEAAAAWAAEAAQABAAEAAAAXAAEAAQABAAEAAAAYAAEAAQACAAEAAAAYAAIAAQABAAAAAAAYAAMAAQABAAAAAAAYAAQAAQAAAAIAAAAZAAQAAQABAAEAAAAaAAQAAQABAAEAAAAbAAQAAQABAAEAAAAcAAQAAQACAAEAAAAcAAUAAQABAAAAAAAcAAYAAQACAAIAAAAbAAYAAQABAAEAAAAaAAYAAQABAAEAAAAZAAYAAQABAAEAAAAYAAYAAQABAAEAAAAXAAYAAQABAAEAAAAWAAYAAQABAAMAAAAWAAUAAQABAAAAAAAWAAQAAQABAAAAAAAWAAMAAQACAAEAAAAVAAMAAQABAAEAAAAUAAMAAQABAAEAAAAVAAYAAQAAAAEAAAAVAAcAAQABAAAAAAAVAAgAAQABAAAAAAAVAAkAAQABAAAAAAAVAAoAAQAAAAIAAAAWAAoAAQABAAEAAAAXAAoAAQACAAEAAAAXAAsAAQABAAAAAAAXAAwAAQACAAIAAAAWAAwAAQABAAEAAAAVAAwAAQABAAEAAAAUAAwAAQABAAEAAAATAAwAAQAAAAIAAAATAAsAAQABAAAAAAATAAoAAQABAAAAAAATAAkAAQABAAAAAAATAAgAAQABAAAAAAATAAcAAQABAAAAAAATAAYAAQABAAAAAAATAAUAAQACAAMAAAATAAQAAQABAAAAAAAPAAUAAQABAAEAAAAQAAUAAQABAAEAAAARAAUAAQABAAEAAAASAAUAAQABAAEAAAA=")
+tile_set = SubResource("TileSet_bf2cq")
+
+[node name="Player" parent="." instance=ExtResource("3_tgow2")]
+position = Vector2(-256, 256)
+scale = Vector2(0.25, 0.25)
+
+[node name="City" parent="." groups=["cities"] instance=ExtResource("4_50icn")]
+position = Vector2(640, 128)
+scale = Vector2(0.25, 0.25)
+city_sprite = ExtResource("5_j3oy1")
+
+[node name="City2" parent="." groups=["cities"] instance=ExtResource("4_50icn")]
+position = Vector2(192, 640)
+scale = Vector2(0.25, 0.25)
+city_name = "city_2"
+city_sprite = ExtResource("6_h8rmn")
+
+[node name="City3" parent="." groups=["cities"] instance=ExtResource("4_50icn")]
+position = Vector2(896, 896)
+scale = Vector2(0.25, 0.25)
+city_name = "city_3"
+city_sprite = ExtResource("7_r5uup")
+
+[node name="City4" parent="." groups=["cities"] instance=ExtResource("4_50icn")]
+position = Vector2(1344, 512)
+scale = Vector2(0.25, 0.25)
+city_name = "city_4"
+city_sprite = ExtResource("8_1eu8r")
+
+[node name="City5" parent="." groups=["cities"] instance=ExtResource("4_50icn")]
+position = Vector2(1536, 64)
+scale = Vector2(0.25, 0.25)
+city_name = "city_5"
+city_sprite = ExtResource("9_6a3fp")
+
+[node name="HUD" parent="." instance=ExtResource("5_7vqah")]
+
+[node name="Tube" parent="." instance=ExtResource("6_jf0wc")]
+position = Vector2(-256, 512)
+scale = Vector2(0.25, 0.25)
+
+[node name="Tube2" parent="." instance=ExtResource("6_jf0wc")]
+position = Vector2(-256, 512)
+scale = Vector2(0.25, 0.25)

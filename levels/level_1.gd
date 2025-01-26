@@ -114,3 +114,8 @@ func _process(delta: float) -> void:
 		GameData.set_defaults()
 		print("All cities cleared! Proceeding to the next level...")
 		SceneManager.swap_scenes("res://levels/loading_level.tscn", get_tree().root, self, "fade_to_black")
+
+	# Check if oxygen has reached zero
+	if GameData.data["current_oxygen"] <= 0:
+		print("Oxygen depleted! Game over...")
+		SceneManager.swap_scenes("res://game_over.tscn", get_tree().root, self, "fade_to_black")

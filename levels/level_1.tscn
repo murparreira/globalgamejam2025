@@ -1,13 +1,33 @@
-[gd_scene load_steps=11 format=4 uid="uid://brvcj84qiferm"]
+[gd_scene load_steps=13 format=4 uid="uid://brvcj84qiferm"]
 
 [ext_resource type="Script" path="res://levels/level_1.gd" id="1_mgvb0"]
 [ext_resource type="Texture2D" uid="uid://dpkbp2vbvd8j1" path="res://assets/background.png" id="1_wjda5"]
 [ext_resource type="PackedScene" uid="uid://equok5cjqcqu" path="res://scenes/player.tscn" id="2_5bq7c"]
 [ext_resource type="Texture2D" uid="uid://7mffi86mcsws" path="res://assets/tilemap-road-256.png" id="2_ek2ox"]
+[ext_resource type="Texture2D" uid="uid://cojcc1r3ct6ap" path="res://assets/tilemap-road-256-v2.png" id="3_e0xso"]
 [ext_resource type="PackedScene" uid="uid://3kgshpypy3rm" path="res://scenes/city.tscn" id="3_m071i"]
 [ext_resource type="PackedScene" uid="uid://bsjkp76ypypxi" path="res://scenes/tree.tscn" id="7_mnhgm"]
 [ext_resource type="PackedScene" uid="uid://dkrnahxdmts20" path="res://tube.tscn" id="8_1e7k1"]
 [ext_resource type="PackedScene" uid="uid://dcvvuo6glqpmy" path="res://scenes/hud.tscn" id="8_p6qw6"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qeedj"]
+texture = ExtResource("3_e0xso")
+texture_region_size = Vector2i(256, 256)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+0:4/0 = 0
+1:4/0 = 0
+2:4/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rsu5i"]
 texture = ExtResource("2_ek2ox")
@@ -30,7 +50,8 @@ texture_region_size = Vector2i(256, 256)
 
 [sub_resource type="TileSet" id="TileSet_d2o74"]
 tile_size = Vector2i(256, 256)
-sources/0 = SubResource("TileSetAtlasSource_rsu5i")
+sources/2 = SubResource("TileSetAtlasSource_rsu5i")
+sources/0 = SubResource("TileSetAtlasSource_qeedj")
 
 [node name="Level1" type="Node2D"]
 script = ExtResource("1_mgvb0")
