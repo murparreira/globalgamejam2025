@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://d2jaui5no3e16"]
+[gd_scene load_steps=5 format=3 uid="uid://d2jaui5no3e16"]
 
 [ext_resource type="Texture2D" uid="uid://dpkbp2vbvd8j1" path="res://assets/background.png" id="1_4qu60"]
+[ext_resource type="Script" path="res://levels/win.gd" id="1_6lwtg"]
 [ext_resource type="Texture2D" uid="uid://dkchsrcdlr7og" path="res://assets/walking01.png" id="2_h83cc"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5vnll"]
@@ -11,6 +12,7 @@ corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
 
 [node name="Win" type="CanvasLayer"]
+script = ExtResource("1_6lwtg")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 anchors_preset = 15

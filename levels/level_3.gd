@@ -41,13 +41,6 @@ func initialize_game() -> void:
 func initialize_cities() -> void:
 	var cities = get_tree().get_nodes_in_group("cities")
 	var tubes = get_tree().get_nodes_in_group("tubes")
-	for i in 10:
-		var tree_instance = tree_scene.instantiate() as SpriteTree
-		add_child(tree_instance)
-		tree_instance.z_index = 10
-		var random_cell = game_area.get_used_cells().pick_random() + [Vector2i(0, 1), Vector2i(0, -1), Vector2i(1, 1), Vector2i(1, -1), Vector2i(-1, 0), Vector2i(-1, 1)].pick_random()
-		print("Tree positioned in: " + str(random_cell))
-		tree_instance.move_to_cell(random_cell)
 
 	for vtube in tubes:
 		tubes_positions.append({
