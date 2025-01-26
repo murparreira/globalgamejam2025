@@ -1,24 +1,38 @@
-[gd_scene load_steps=6 format=3 uid="uid://equok5cjqcqu"]
+[gd_scene load_steps=8 format=3 uid="uid://equok5cjqcqu"]
 
 [ext_resource type="Script" path="res://scenes/player.gd" id="1_dvdog"]
-[ext_resource type="Texture2D" uid="uid://cqaqoyg00suvt" path="res://assets/walking-cycle.png" id="1_tg150"]
+[ext_resource type="Texture2D" uid="uid://djkdhsq1qq4dp" path="res://assets/spritesheet-walking.png" id="2_w5mga"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_wp00j"]
-atlas = ExtResource("1_tg150")
+[sub_resource type="AtlasTexture" id="AtlasTexture_indqd"]
+atlas = ExtResource("2_w5mga")
 region = Rect2(0, 0, 256, 256)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ejuji"]
-atlas = ExtResource("1_tg150")
+[sub_resource type="AtlasTexture" id="AtlasTexture_8a8m8"]
+atlas = ExtResource("2_w5mga")
 region = Rect2(256, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d48a1"]
+atlas = ExtResource("2_w5mga")
+region = Rect2(512, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yaj43"]
+atlas = ExtResource("2_w5mga")
+region = Rect2(768, 0, 256, 256)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_begpe"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_wp00j")
+"texture": SubResource("AtlasTexture_indqd")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ejuji")
+"texture": SubResource("AtlasTexture_8a8m8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d48a1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yaj43")
 }],
 "loop": true,
 "name": &"default",
