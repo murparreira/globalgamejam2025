@@ -1,11 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://eqp80nd7ng4p"]
+[gd_scene load_steps=10 format=3 uid="uid://vy6agxtd8rck"]
 
 [ext_resource type="Script" path="res://levels/minigame_tube.gd" id="1_hpo3i"]
-[ext_resource type="Texture2D" uid="uid://dpkbp2vbvd8j1" path="res://assets/background.png" id="2_pduge"]
-[ext_resource type="PackedScene" uid="uid://dkrnahxdmts20" path="res://tube.tscn" id="3_qs0rj"]
+[ext_resource type="Texture2D" uid="uid://dqbqiwvauv843" path="res://assets/background-minigame-tube.png" id="2_sj0hw"]
+[ext_resource type="Texture2D" uid="uid://dv4yeustb38n" path="res://assets/paper.png" id="3_mjpwt"]
+[ext_resource type="PackedScene" path="res://tube.tscn" id="3_qs0rj"]
+[ext_resource type="Texture2D" uid="uid://dpalhoj4y210r" path="res://assets/arrow.png" id="4_oiynf"]
 [ext_resource type="PackedScene" uid="uid://equok5cjqcqu" path="res://scenes/player.tscn" id="4_vvodp"]
-[ext_resource type="Texture2D" uid="uid://duggc8kcx26w7" path="res://assets/tanque-o2-frame2.png" id="5_roxj1"]
-[ext_resource type="PackedScene" uid="uid://uihil4g51lfy" path="res://scenes/ball.tscn" id="6_fxgxg"]
+[ext_resource type="PackedScene" uid="uid://ddueid4ri0d6r" path="res://scenes/ball.tscn" id="6_fxgxg"]
+[ext_resource type="Texture2D" uid="uid://dsrihi7l7lt8p" path="res://assets/button-ad.png" id="7_3h2pb"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5j884"]
 radius = 108.791
@@ -41,14 +43,30 @@ offset_left = 2.0
 offset_top = 5.0
 offset_right = 1922.0
 offset_bottom = 1085.0
-texture = ExtResource("2_pduge")
+texture = ExtResource("2_sj0hw")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(1660, 683)
+texture = ExtResource("3_mjpwt")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = 1618.0
+offset_top = 614.0
+offset_right = 1748.0
+offset_bottom = 783.0
+text = "Pressione os botoes corretos no momento correto.
+Ass: outro funcionario"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1607, 418)
+texture = ExtResource("4_oiynf")
 
 [node name="Tube" parent="." instance=ExtResource("3_qs0rj")]
-position = Vector2(408, 297)
-scale = Vector2(2, 2)
+position = Vector2(483, 296)
+scale = Vector2(1.5, 1.5)
 
 [node name="Player" parent="." instance=ExtResource("4_vvodp")]
-position = Vector2(239, 529)
+position = Vector2(277, 404)
 movement_enabled = false
 
 [node name="ContactArea" type="Area2D" parent="."]
@@ -59,9 +77,9 @@ scale = Vector2(0.504307, 0.584306)
 shape = SubResource("CircleShape2D_5j884")
 
 [node name="Sprite2D" type="Sprite2D" parent="ContactArea"]
-position = Vector2(192, 960)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("5_roxj1")
+position = Vector2(188, 956)
+scale = Vector2(0.745455, 0.745455)
+texture = ExtResource("7_3h2pb")
 
 [node name="GameContainer" type="Node" parent="."]
 
