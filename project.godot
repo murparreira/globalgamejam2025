@@ -24,7 +24,6 @@ buses/default_bus_layout="res://resources/default_bus_layout.tres"
 SceneManager="*res://autoload/scene_manager.gd"
 MusicManager="*res://autoload/music_manager.gd"
 GameData="*res://autoload/game_data.gd"
-SfxManager="*res://autoload/sfx_manager.gd"
 
 [display]
 

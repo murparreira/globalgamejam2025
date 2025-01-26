@@ -74,7 +74,6 @@ func _ready() -> void:
 			hide_and_disable_ball(balls[i])
 	
 	timer.timeout.connect(_on_timer_timeout)
-	contact_area.body_entered.connect(_on_contact_area_body_entered)  # Connect signal
 
 func hide_and_disable_ball(ball: Ball) -> void:
 	# Hide the ball's sprite
@@ -152,44 +151,20 @@ func stop_hint_blink() -> void:
 	is_hint_blinking = false
 
 func _process(delta: float) -> void:
-	#if Input.is_action_pressed("ui_a"):
-		#check_ball_input("A")
-	#if Input.is_action_pressed("ui_d"):
-		#check_ball_input("D")
+	if Input.is_action_just_pressed("ui_a"):
+		check_ball_input("A")
+	if Input.is_action_just_pressed("ui_d"):
+		check_ball_input("D")
 
 	# Wait for player input after the minigame is over
 	if minigame_over:
 		result_label.visible = true
 		result_label.text = "[center]Resultado da operação: [b]" + str(correct_balls) + " alvos acertados[/b]\n[b]" + str(oxygen_percentage) + "%[/b] do cilindro de oxigenio vai ser recuperado![/center]"
 		
-		if Input.is_action_pressed("ui_accept"):  # SPACEBAR
+		if Input.is_action_just_pressed("ui_accept"):  # SPACEBAR
 			SceneManager.swap_scenes("res://levels/" + GameData.data["current_level"] + ".tscn", get_tree().root, self, "fade_to_black")
 			print("Proceeding to the next scene...")
 			stop_hint_blink()  # Stop the blinking animation
-
-func _on_contact_area_body_entered(body: Node) -> void:
-	if body is Ball:
-		var ball = body as Ball
-		if ball.key != "-" and not ball in scored_balls:
-			# Handle correct input
-			if Input.is_action_pressed("ui_a") and ball.key == "A":
-				handle_correct_input(ball)
-			elif Input.is_action_pressed("ui_d") and ball.key == "D":
-				handle_correct_input(ball)
-			else:
-				handle_wrong_input()
-
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("ui_a"):
-		check_ball_input("A")
-	if event.is_action_pressed("ui_d"):
-		check_ball_input("D")
-
-	# Wait for player input after the minigame is over
-	if minigame_over and event.is_action_pressed("ui_accept"):  # SPACEBAR
-		SceneManager.swap_scenes("res://levels/" + GameData.data["current_level"] + ".tscn", get_tree().root, self, "fade_to_black")
-		print("Proceeding to the next scene...")
-		stop_hint_blink()  # Stop the blinking animation
 
 func check_ball_input(input_key: String) -> void:
 	for ball in balls:
@@ -197,20 +172,13 @@ func check_ball_input(input_key: String) -> void:
 			continue  # Skip missing balls
 
 		if contact_area.overlaps_area(ball) and ball.key == input_key and not ball in scored_balls:
-			handle_correct_input(ball)
+			print("Correct input! Ball matched: ", ball.name)
+			correct_balls += 1
+			scored_balls.append(ball)  # Mark the ball as scored
+			update_oxygen_cylinder()
+			disable_ball_collider(ball)  # Disable the collider immediately
 			break
-		else:
-			handle_wrong_input()
-
-func handle_correct_input(ball: Ball) -> void:
-	print("Correct input! Ball matched: ", ball.name)
-	correct_balls += 1
-	scored_balls.append(ball)  # Mark the ball as scored
-	update_oxygen_cylinder()
-	disable_ball_collider(ball)  # Disable the collider immediately
-
-func handle_wrong_input() -> void:
-	pass
+		# TODO: Add logic for incorrect input (e.g., penalty, sound effect)
 
 func update_oxygen_cylinder() -> void:
 	var total_balls = balls.size()
