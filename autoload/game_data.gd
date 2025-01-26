@@ -3,6 +3,7 @@ extends Node
 var data = {
 	'current_level': 'level_1',
 	'current_minigame_city': null,
+	'current_minigame_tube': null,
 	'current_oxygen': 100,
 	'current_player_position': null,
 	'levels': {

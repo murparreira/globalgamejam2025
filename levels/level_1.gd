@@ -9,6 +9,7 @@ extends Node2D
 
 var cities_positions : Array = []
 var current_selected_city : City
+var current_selected_tube : Tube
 
 func _ready() -> void:
 	hint_label.visible = false
@@ -56,6 +57,12 @@ func get_all_tile_positions(tilemaplayer: TileMapLayer, layer: int) -> Array:
 func _on_player_moved(player_position: Vector2i) -> void:
 	if o_2_label_value != null:
 		o_2_label_value.text = str(GameData.data["current_oxygen"])
+
+	if game_area.local_to_map(tube.position) == player_position:
+		hint_label.visible = true
+		current_selected_tube = tube
+		print("Selected Tube: ", current_selected_tube.name)
+
 	for city_data in cities_positions:
 		if city_data["position"] == player_position:
 			var blink_duration: float = 1.0
@@ -74,6 +81,13 @@ func _on_player_moved(player_position: Vector2i) -> void:
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_accept"):
+		if current_selected_tube != null:
+			if !GameData.data['levels']['level_1']['tube']:
+				print("SPACEBAR pressed in tube: ", current_selected_tube.name)
+				GameData.data['current_minigame_tube'] = current_selected_tube.name
+				SceneManager.swap_scenes("res://levels/minigame_tube.tscn", get_tree().root, self, "fade_to_black")
+		else:
+			print("SPACEBAR pressed, but not in a city.")
 		if current_selected_city != null:
 			if !GameData.data['levels']['level_1']['cities'][current_selected_city.city_name]['completed']:
 				print("SPACEBAR pressed in city: ", current_selected_city.city_name)

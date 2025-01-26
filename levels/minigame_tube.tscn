@@ -1,0 +1,87 @@
+[gd_scene load_steps=8 format=3 uid="uid://eqp80nd7ng4p"]
+
+[ext_resource type="Script" path="res://levels/minigame_tube.gd" id="1_hpo3i"]
+[ext_resource type="Texture2D" uid="uid://dpkbp2vbvd8j1" path="res://assets/background.png" id="2_pduge"]
+[ext_resource type="PackedScene" uid="uid://dkrnahxdmts20" path="res://tube.tscn" id="3_qs0rj"]
+[ext_resource type="PackedScene" uid="uid://equok5cjqcqu" path="res://scenes/player.tscn" id="4_vvodp"]
+[ext_resource type="Texture2D" uid="uid://duggc8kcx26w7" path="res://assets/tanque-o2-frame2.png" id="5_roxj1"]
+[ext_resource type="PackedScene" uid="uid://uihil4g51lfy" path="res://scenes/ball.tscn" id="6_fxgxg"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5j884"]
+radius = 108.791
+
+[node name="MinigameTube" type="Node2D"]
+script = ExtResource("1_hpo3i")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = 2.0
+offset_top = 5.0
+offset_right = 1922.0
+offset_bottom = 1085.0
+texture = ExtResource("2_pduge")
+
+[node name="Tube" parent="." instance=ExtResource("3_qs0rj")]
+position = Vector2(408, 297)
+scale = Vector2(2, 2)
+
+[node name="Player" parent="." instance=ExtResource("4_vvodp")]
+position = Vector2(239, 529)
+movement_enabled = false
+
+[node name="ContactArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ContactArea"]
+position = Vector2(192, 960)
+scale = Vector2(0.504307, 0.584306)
+shape = SubResource("CircleShape2D_5j884")
+
+[node name="Sprite2D" type="Sprite2D" parent="ContactArea"]
+position = Vector2(192, 960)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_roxj1")
+
+[node name="GameContainer" type="Node" parent="."]
+
+[node name="Ball" parent="GameContainer" instance=ExtResource("6_fxgxg")]
+position = Vector2(2048, 960)
+key = "A"
+
+[node name="Ball2" parent="GameContainer" instance=ExtResource("6_fxgxg")]
+position = Vector2(2240, 960)
+key = "A"
+
+[node name="Ball3" parent="GameContainer" instance=ExtResource("6_fxgxg")]
+position = Vector2(2432, 960)
+key = "A"
+
+[node name="Ball4" parent="GameContainer" instance=ExtResource("6_fxgxg")]
+position = Vector2(2624, 960)
+key = "A"
+
+[node name="Ball5" parent="GameContainer" instance=ExtResource("6_fxgxg")]
+position = Vector2(2816, 960)
+key = "A"
+
+[node name="Ball6" parent="GameContainer" instance=ExtResource("6_fxgxg")]
+position = Vector2(3008, 960)
+key = "A"
+
+[node name="Ball7" parent="GameContainer" instance=ExtResource("6_fxgxg")]
+position = Vector2(3200, 960)
+key = "A"
+
+[node name="Ball8" parent="GameContainer" instance=ExtResource("6_fxgxg")]
+position = Vector2(3392, 960)
+key = "A"
+
+[node name="Ball9" parent="GameContainer" instance=ExtResource("6_fxgxg")]
+position = Vector2(3584, 960)
+key = "A"
+
+[node name="Ball10" parent="GameContainer" instance=ExtResource("6_fxgxg")]
+position = Vector2(3776, 960)
+key = "A"
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
