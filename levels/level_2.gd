@@ -2,11 +2,9 @@ extends Node2D
 
 @onready var game_area: TileMapLayer = $Visuals/GameArea
 @onready var player: Player = $Player
-@onready var hint_label: RichTextLabel = $HUD/HintLabel
 @onready var city: Node2D = $City
-
 @onready var tube: Tube = $Tube
-@onready var o_2_label_value: Label = $HUD/PanelContainer/VBoxContainer/O2LabelValue
+@onready var hud: CanvasLayer = $HUD
 
 var tree_scene = preload("res://scenes/tree.tscn")
 
@@ -19,15 +17,13 @@ func _ready() -> void:
 	initialize_game()
 
 func initialize_game() -> void:
-	hint_label.visible = false
-
 	# Set up tube and player positions
 	tube.set_starting_position(Vector2i(1, 6))
 	var player_starting_position = GameData.data.get('current_player_position', Vector2i(0, 3))
 	if player_starting_position == null:
 		player_starting_position = Vector2i(4, 4)
 	player.set_starting_position(player_starting_position)
-	o_2_label_value.text = str(GameData.data.get('current_oxygen', 0))
+	hud.o_2_label_value.text = str(GameData.data.get('current_oxygen', 0))
 
 	player.animated_sprite_2d.play()
 	player.player_moved.connect(_on_player_moved)
@@ -63,12 +59,13 @@ func _on_player_moved(player_position: Vector2i) -> void:
 	check_city_collision(player_position)
 
 func update_oxygen_display() -> void:
-	if o_2_label_value:
-		o_2_label_value.text = str(GameData.data["current_oxygen"])
+	if hud.o_2_label_value:
+		GameData.data["current_oxygen"] -= 2
+		hud.o_2_label_value.text = str(GameData.data["current_oxygen"])
 
 func check_tube_collision(player_position: Vector2i) -> void:
 	if game_area.local_to_map(tube.position) == player_position:
-		hint_label.visible = true
+		hud.hint_label.visible = true
 		current_selected_tube = tube
 		print("Selected Tube: ", current_selected_tube.name)
 		return
@@ -82,15 +79,15 @@ func check_city_collision(player_position: Vector2i) -> void:
 			print("Selected City: ", current_selected_city.city_name)
 			return
 
-	hint_label.visible = false
+	hud.hint_label.visible = false
 	current_selected_city = null
 
 func start_hint_blink() -> void:
-	hint_label.visible = true
+	hud.hint_label.visible = true
 	var blink_duration: float = 1.0
 	var tween = get_tree().create_tween()
-	tween.tween_property(hint_label, "modulate:a", 0.0, blink_duration / 2)
-	tween.tween_property(hint_label, "modulate:a", 1.0, blink_duration / 2)
+	tween.tween_property(hud.hint_label, "modulate:a", 0.0, blink_duration / 2)
+	tween.tween_property(hud.hint_label, "modulate:a", 1.0, blink_duration / 2)
 	tween.set_loops()
 
 func _input(event: InputEvent) -> void:
@@ -124,8 +121,14 @@ func check_all_cities_cleared() -> bool:
 	return true
 
 func _process(delta: float) -> void:
+	# Check if all cities are cleared
 	if check_all_cities_cleared():
 		GameData.set_defaults()
 		GameData.data['current_level'] = 'level_2'
 		print("All cities cleared! Proceeding to the next level...")
 		SceneManager.swap_scenes("res://levels/loading_level.tscn", get_tree().root, self, "fade_to_black")
+
+	# Check if oxygen has reached zero
+	if GameData.data["current_oxygen"] <= 0:
+		print("Oxygen depleted! Game over...")
+		SceneManager.swap_scenes("res://levels/game_over.tscn", get_tree().root, self, "fade_to_black")

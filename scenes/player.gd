@@ -44,7 +44,6 @@ func set_starting_position(starting_position: Vector2i) -> void:
 	global_position = game_area.map_to_local(starting_position)
 
 func move_to_cell(direction: Vector2i) -> void:
-	GameData.data["current_oxygen"] -= 1
 	var current_grid_position = game_area.local_to_map(position)
 	var target_grid_position = current_grid_position + direction
 	
