@@ -5,9 +5,9 @@
 [ext_resource type="PackedScene" uid="uid://equok5cjqcqu" path="res://scenes/player.tscn" id="2_5bq7c"]
 [ext_resource type="Texture2D" uid="uid://7mffi86mcsws" path="res://assets/tilemap-road-256.png" id="2_ek2ox"]
 [ext_resource type="PackedScene" uid="uid://3kgshpypy3rm" path="res://scenes/city.tscn" id="3_m071i"]
-[ext_resource type="Script" path="res://scenes/city.gd" id="6_717id"]
 [ext_resource type="PackedScene" uid="uid://bsjkp76ypypxi" path="res://scenes/tree.tscn" id="7_mnhgm"]
 [ext_resource type="PackedScene" uid="uid://dkrnahxdmts20" path="res://tube.tscn" id="8_1e7k1"]
+[ext_resource type="PackedScene" uid="uid://dcvvuo6glqpmy" path="res://scenes/hud.tscn" id="8_p6qw6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rsu5i"]
 texture = ExtResource("2_ek2ox")
@@ -50,49 +50,11 @@ position = Vector2(137, 1524)
 
 [node name="City" parent="." groups=["cities"] instance=ExtResource("3_m071i")]
 position = Vector2(1536, 0)
-script = ExtResource("6_717id")
 
 [node name="Tube" parent="." instance=ExtResource("8_1e7k1")]
 position = Vector2(423, 1523)
 
-[node name="HUD" type="Node2D" parent="."]
-
-[node name="HintLabel" type="RichTextLabel" parent="HUD"]
-custom_minimum_size = Vector2(640, 0)
-offset_left = 1014.0
-offset_top = 139.0
-offset_right = 1654.0
-offset_bottom = 179.0
-bbcode_enabled = true
-text = "[center]press [b]space[/b] to enter city[/center]"
-fit_content = true
-
-[node name="PanelContainer" type="PanelContainer" parent="HUD"]
-offset_left = 23.0
-offset_top = 23.0
-offset_right = 63.0
-offset_bottom = 63.0
-scale = Vector2(4.56, 3.36)
-
-[node name="VBoxContainer" type="VBoxContainer" parent="HUD/PanelContainer"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="HUD/PanelContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 10
-text = "O2"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="O2LabelValue" type="Label" parent="HUD/PanelContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.253319, 0.473894, 1, 1)
-theme_override_constants/outline_size = 2
-theme_override_constants/shadow_outline_size = 2
-theme_override_font_sizes/font_size = 10
-text = "100"
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="HUD" parent="." instance=ExtResource("8_p6qw6")]
 
 [node name="SpriteTree" parent="." instance=ExtResource("7_mnhgm")]
 position = Vector2(231, 676)

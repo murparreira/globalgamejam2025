@@ -24,5 +24,3 @@ func move_to_cell(direction: Vector2i) -> void:
 		return
 
 	global_position = game_area.map_to_local(target_grid_position)
-	global_position.x -= 16
-	global_position.y -= 16
