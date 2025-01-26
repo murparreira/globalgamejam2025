@@ -46,17 +46,32 @@ var scored_balls: Array[Ball] = []
 
 func _ready() -> void:
 	hint_label.visible = false
-	var sample_keys = ['A', 'D', 'A', 'D', 'A', 'D', 'A', 'D', 'A', 'D']
+	var sample_keys = ['A', 'D', '-', 'D', '-', '-', 'A', 'D', 'A', 'D']
 	for i in range(balls.size()):
 		balls[i].key = sample_keys[i]
+		if balls[i].key == "-":
+			hide_and_disable_ball(balls[i])
 	
 	timer.timeout.connect(_on_timer_timeout)
+
+func hide_and_disable_ball(ball: Ball) -> void:
+	# Hide the ball's sprite
+	if ball.has_node("Sprite2D"):
+		ball.get_node("Sprite2D").visible = false
+
+	# Disable the ball's collision shape
+	if ball.has_node("CollisionShape2D"):
+		ball.get_node("CollisionShape2D").set_deferred("disabled", true)
 
 func _on_timer_timeout() -> void:
 	for ball in balls:
 		move_ball_to_left(ball)
 
 func move_ball_to_left(ball: Ball) -> void:
+	# Skip missing balls
+	if ball.key == "-":
+		return
+
 	# Calculate the distance to travel
 	var start_x = ball.position.x
 	var end_x = -100  # Target position
@@ -72,6 +87,10 @@ func move_ball_to_left(ball: Ball) -> void:
 	tween.tween_callback(check_minigame_over)
 
 func disable_ball_collider(ball: Ball) -> void:
+	# Skip missing balls
+	if ball.key == "-":
+		return
+
 	# Disable the ball's collider when it passes the contact area
 	var collision_shape = ball.get_child(0) as CollisionShape2D
 	if collision_shape:
@@ -80,7 +99,7 @@ func disable_ball_collider(ball: Ball) -> void:
 func check_minigame_over() -> void:
 	# Check if all balls have finished their tweens
 	for ball in balls:
-		if ball.position.x > -100:  # Check if any ball is still on the screen
+		if ball.key != "-" and ball.position.x > -100:  # Skip missing balls
 			return
 
 	# If all balls have passed, set minigame_over to true
@@ -126,6 +145,9 @@ func _process(delta: float) -> void:
 
 func check_ball_input(input_key: String) -> void:
 	for ball in balls:
+		if ball.key == "-":
+			continue  # Skip missing balls
+
 		if contact_area.overlaps_area(ball) and ball.key == input_key and not ball in scored_balls:
 			print("Correct input! Ball matched: ", ball.name)
 			correct_balls += 1
