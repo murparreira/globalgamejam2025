@@ -22,7 +22,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
-"speed": 5.0
+"speed": 3.0
 }]
 
 [node name="Player" type="Node2D"]
@@ -30,4 +30,4 @@ script = ExtResource("1_dvdog")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_begpe")
-frame_progress = 0.560227
+frame_progress = 0.310662

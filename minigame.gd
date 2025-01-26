@@ -1,15 +1,15 @@
 extends Node2D
 
-@onready var arrow: Node2D = $Arrow
-@onready var arrow_collider: Area2D = $Arrow/Area2D
+@onready var arrow: Node2D = $GameContainer/Arrow
+@onready var arrow_collider: Area2D = $GameContainer/Arrow/Area2D
 
 @onready var game_over_label: RichTextLabel = $GameOverLabel
 
-@onready var stop_areas: Array[Node2D] = [$StopArea1, $StopArea2, $StopArea3]
+@onready var stop_areas: Array[Node2D] = [$GameContainer/StopArea1, $GameContainer/StopArea2, $GameContainer/StopArea3]
 @onready var stop_area_colliders: Array[Area2D] = [
-	$StopArea1/Area2D,
-	$StopArea2/Area2D,
-	$StopArea3/Area2D
+	$GameContainer/StopArea1/Area2D,
+	$GameContainer/StopArea2/Area2D,
+	$GameContainer/StopArea3/Area2D
 ]
 
 var tween: Tween = create_tween().set_loops()
@@ -48,8 +48,8 @@ func _process(delta: float) -> void:
 		# Display the result
 		if !continue_playing:
 			game_over_label.visible = true
-			game_over_label.text = "YOU LOSE, GAME OVER!!!"
+			game_over_label.text = "Bom, não se pode ganhar todas não é mesmo? :("
 		else:
 			if wins.size() == 3:
 				game_over_label.visible = true
-				game_over_label.text = "YOU WIN!!!"
+				game_over_label.text = "É isso aí, mais uma entrega completada. :)"

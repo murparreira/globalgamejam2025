@@ -10,7 +10,7 @@ var current_selected_city : City
 
 func _ready() -> void:
 	hint_label.visible = false
-	player.move_to_cell(Vector2i(0, 3))
+	player.set_starting_position(Vector2i(0, 3))
 	player.animated_sprite_2d.play()
 	player.player_moved.connect(_on_player_moved)
 	var cities = get_tree().get_nodes_in_group("cities")

@@ -25,77 +25,82 @@ position = Vector2(960, 544)
 texture = ExtResource("2_6n5ls")
 
 [node name="City" parent="." instance=ExtResource("1_h0wuq")]
-position = Vector2(192, 224)
+position = Vector2(192, 64)
+scale = Vector2(2, 2)
 
 [node name="Player" parent="." instance=ExtResource("2_sqsnt")]
-position = Vector2(320, 544)
-scale = Vector2(0.5, 0.5)
+position = Vector2(256, 576)
+movement_enabled = false
 
-[node name="StopArea1" type="Node2D" parent="."]
+[node name="GameOverLabel" type="RichTextLabel" parent="."]
+custom_minimum_size = Vector2(640, 0)
+offset_left = 800.0
+offset_top = 512.0
+offset_right = 1312.0
+offset_bottom = 640.0
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+fit_content = true
+
+[node name="GameContainer" type="Node2D" parent="."]
+
+[node name="StopArea1" type="Node2D" parent="GameContainer"]
 position = Vector2(544, 960)
 
-[node name="ColorRect" type="ColorRect" parent="StopArea1"]
+[node name="ColorRect" type="ColorRect" parent="GameContainer/StopArea1"]
 offset_left = -64.0
 offset_top = -32.0
 offset_right = 128.0
 offset_bottom = 64.0
 color = Color(0.317846, 0.587195, 0.223951, 1)
 
-[node name="Area2D" type="Area2D" parent="StopArea1"]
+[node name="Area2D" type="Area2D" parent="GameContainer/StopArea1"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StopArea1/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GameContainer/StopArea1/Area2D"]
 position = Vector2(32, 14.5)
 scale = Vector2(2, 2)
 shape = SubResource("RectangleShape2D_3il7c")
 
-[node name="StopArea2" type="Node2D" parent="."]
+[node name="StopArea2" type="Node2D" parent="GameContainer"]
 position = Vector2(224, 960)
 
-[node name="ColorRect" type="ColorRect" parent="StopArea2"]
+[node name="ColorRect" type="ColorRect" parent="GameContainer/StopArea2"]
 offset_left = -64.0
 offset_top = -32.0
 offset_right = 64.0
 offset_bottom = 64.0
 color = Color(0.317846, 0.587195, 0.223951, 1)
 
-[node name="Area2D" type="Area2D" parent="StopArea2"]
+[node name="Area2D" type="Area2D" parent="GameContainer/StopArea2"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StopArea2/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GameContainer/StopArea2/Area2D"]
 position = Vector2(0, 16)
 shape = SubResource("RectangleShape2D_xwatb")
 
-[node name="StopArea3" type="Node2D" parent="."]
+[node name="StopArea3" type="Node2D" parent="GameContainer"]
 position = Vector2(1152, 960)
 
-[node name="ColorRect" type="ColorRect" parent="StopArea3"]
+[node name="ColorRect" type="ColorRect" parent="GameContainer/StopArea3"]
 offset_left = -64.0
 offset_top = -32.0
 offset_bottom = 64.0
 color = Color(0.317846, 0.587195, 0.223951, 1)
 
-[node name="Area2D" type="Area2D" parent="StopArea3"]
+[node name="Area2D" type="Area2D" parent="GameContainer/StopArea3"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StopArea3/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GameContainer/StopArea3/Area2D"]
 position = Vector2(-32, 16)
 shape = SubResource("RectangleShape2D_v804l")
 
-[node name="Arrow" type="Node2D" parent="."]
+[node name="Arrow" type="Node2D" parent="GameContainer"]
 position = Vector2(1408, 960)
 
-[node name="Sprite2D" type="Sprite2D" parent="Arrow"]
+[node name="Sprite2D" type="Sprite2D" parent="GameContainer/Arrow"]
 scale = Vector2(8, 8)
 texture = ExtResource("3_5s7bq")
 
-[node name="Area2D" type="Area2D" parent="Arrow"]
+[node name="Area2D" type="Area2D" parent="GameContainer/Arrow"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Arrow/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GameContainer/Arrow/Area2D"]
 scale = Vector2(5, 5)
 shape = SubResource("RectangleShape2D_g8mc3")
-
-[node name="GameOverLabel" type="RichTextLabel" parent="."]
-offset_left = 800.0
-offset_top = 512.0
-offset_right = 1312.0
-offset_bottom = 640.0
-theme_override_font_sizes/normal_font_size = 50
-text = "YOU WIN!!!"

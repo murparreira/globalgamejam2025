@@ -4,6 +4,8 @@ class_name Player extends Node2D
 @onready var oxygen_level: RichTextLabel = $"../Visuals/HUD/OxygenLevel"
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
+@export var movement_enabled : bool = true
+
 var target_position: Vector2i
 var playable_area: Array
 var game_area : TileMapLayer
@@ -18,6 +20,8 @@ func _ready() -> void:
 	playable_area = game_area.get_used_cells()
 
 func _process(delta: float) -> void:
+	if !movement_enabled:
+		return
 	var direction = Vector2.ZERO
 	if Input.is_action_just_pressed("ui_up"):
 		direction = Vector2.UP
@@ -25,11 +29,21 @@ func _process(delta: float) -> void:
 		direction = Vector2.DOWN
 	if Input.is_action_just_pressed("ui_left"):
 		direction = Vector2.LEFT
+		animated_sprite_2d.flip_h = true
 	if Input.is_action_just_pressed("ui_right"):
 		direction = Vector2.RIGHT
+		animated_sprite_2d.flip_h = false
 
 	if direction != Vector2.ZERO:
 		move_to_cell(direction)
+
+func set_starting_position(starting_position: Vector2i) -> void:
+	var current_grid_position = game_area.local_to_map(position)
+	if !playable_area.has(starting_position):
+		return
+	global_position = game_area.map_to_local(starting_position)
+	global_position.x -= 16
+	global_position.y -= 16
 
 func move_to_cell(direction: Vector2i) -> void:
 	if oxygen_level != null:
