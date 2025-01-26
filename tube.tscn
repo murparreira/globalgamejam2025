@@ -1,0 +1,46 @@
+[gd_scene load_steps=8 format=3 uid="uid://dkrnahxdmts20"]
+
+[ext_resource type="Texture2D" uid="uid://d0l8o86grkcbi" path="res://assets/spritesheet-tanqueo2-anim.png" id="1_3r2l1"]
+[ext_resource type="Script" path="res://tube.gd" id="1_654v5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5giqg"]
+atlas = ExtResource("1_3r2l1")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0x1n6"]
+atlas = ExtResource("1_3r2l1")
+region = Rect2(256, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_op4c0"]
+atlas = ExtResource("1_3r2l1")
+region = Rect2(512, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3rrfj"]
+atlas = ExtResource("1_3r2l1")
+region = Rect2(768, 0, 256, 256)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sq328"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5giqg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0x1n6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_op4c0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3rrfj")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Tube" type="Node2D"]
+script = ExtResource("1_654v5")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_sq328")

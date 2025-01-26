@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://brvcj84qiferm"]
+[gd_scene load_steps=11 format=4 uid="uid://brvcj84qiferm"]
 
 [ext_resource type="Script" path="res://levels/level_1.gd" id="1_mgvb0"]
 [ext_resource type="Texture2D" uid="uid://dpkbp2vbvd8j1" path="res://assets/background.png" id="1_wjda5"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://3kgshpypy3rm" path="res://scenes/city.tscn" id="3_m071i"]
 [ext_resource type="Script" path="res://scenes/city.gd" id="6_717id"]
 [ext_resource type="PackedScene" uid="uid://bsjkp76ypypxi" path="res://scenes/tree.tscn" id="7_mnhgm"]
+[ext_resource type="PackedScene" uid="uid://dkrnahxdmts20" path="res://tube.tscn" id="8_1e7k1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rsu5i"]
 texture = ExtResource("2_ek2ox")
@@ -50,6 +51,9 @@ position = Vector2(137, 1524)
 [node name="City" parent="." groups=["cities"] instance=ExtResource("3_m071i")]
 position = Vector2(1536, 0)
 script = ExtResource("6_717id")
+
+[node name="Tube" parent="." instance=ExtResource("8_1e7k1")]
+position = Vector2(423, 1523)
 
 [node name="HUD" type="Node2D" parent="."]
 

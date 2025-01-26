@@ -4,6 +4,7 @@ extends Node2D
 @onready var player: Player = $Player
 @onready var hint_label: RichTextLabel = $HUD/HintLabel
 @onready var city: City = $City
+@onready var tube: Tube = $Tube
 @onready var o_2_label_value: Label = $HUD/PanelContainer/VBoxContainer/O2LabelValue
 
 var cities_positions : Array = []
@@ -12,6 +13,8 @@ var current_selected_city : City
 func _ready() -> void:
 	hint_label.visible = false
 	
+	tube.set_starting_position(Vector2i(2, 1))
+
 	if GameData.data['current_player_position'] != null:
 		player.set_starting_position(GameData.data['current_player_position'])
 	else:
