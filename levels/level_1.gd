@@ -11,7 +11,15 @@ var current_selected_city : City
 
 func _ready() -> void:
 	hint_label.visible = false
-	player.set_starting_position(Vector2i(0, 3))
+	
+	if GameData.data['current_player_position'] != null:
+		player.set_starting_position(GameData.data['current_player_position'])
+	else:
+		player.set_starting_position(Vector2i(0, 3))
+	
+	if GameData.data['current_oxygen'] != null:
+		o_2_label_value.text = str(GameData.data['current_oxygen'])
+
 	player.animated_sprite_2d.play()
 	player.player_moved.connect(_on_player_moved)
 	var cities = get_tree().get_nodes_in_group("cities")
@@ -20,6 +28,12 @@ func _ready() -> void:
 			"position": game_area.local_to_map(city.position),
 			"city": city
 		})
+		if GameData.data['levels']['level_1']['cities'][city.city_name]['completed']:
+			#var tween = get_tree().create_tween()
+			#city.sprite_2d.modulate = Color(0.3, 0.3, 0.3, 1)
+			#tween.tween_property(city.sprite_2d, "modulate", Color(1, 1, 1, 1), 1.0)
+			city.sprite_2d.material = ShaderMaterial.new()
+			city.sprite_2d.material.shader = load("res://bw.gdshader")
 	
 	print("USED CELLS: ")
 	print(game_area.get_used_cells())
@@ -36,26 +50,20 @@ func get_all_tile_positions(tilemaplayer: TileMapLayer, layer: int) -> Array:
 				tile_positions.append(cell_position)
 	return tile_positions
 
-func _on_player_moved(player_position: Vector2i, oxygen_levels: int) -> void:
+func _on_player_moved(player_position: Vector2i) -> void:
 	if o_2_label_value != null:
-		o_2_label_value.text = str(oxygen_levels)
+		o_2_label_value.text = str(GameData.data["current_oxygen"])
 	for city_data in cities_positions:
 		if city_data["position"] == player_position:
 			var blink_duration: float = 1.0
 			var tween = get_tree().create_tween()
-			# Set the initial alpha to fully visible (1.0)
 			hint_label.modulate = Color(1, 1, 1, 1)
-			# Animate the alpha channel to 0 (fully transparent)
 			tween.tween_property(hint_label, "modulate:a", 0.0, blink_duration / 2)
-			# Animate the alpha channel back to 1 (fully visible)
 			tween.tween_property(hint_label, "modulate:a", 1.0, blink_duration / 2)
-			# Loop the animation indefinitely
 			tween.set_loops()
 			hint_label.visible = true
 			current_selected_city = city_data["city"]
-			print("Selected City: ", current_selected_city.name)
-			print("Minigame: ", current_selected_city.minigame)
-			print("Cleared: ", current_selected_city.cleared)
+			print("Selected City: ", current_selected_city.city_name)
 			return
 	
 	hint_label.visible = false
@@ -64,7 +72,9 @@ func _on_player_moved(player_position: Vector2i, oxygen_levels: int) -> void:
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_accept"):
 		if current_selected_city != null:
-			print("SPACEBAR pressed in city: ", current_selected_city.name)
-			SceneManager.swap_scenes("res://levels/minigame.tscn", get_tree().root, self, "fade_to_black")
+			if !GameData.data['levels']['level_1']['cities'][current_selected_city.city_name]['completed']:
+				print("SPACEBAR pressed in city: ", current_selected_city.city_name)
+				GameData.data['current_minigame_city'] = current_selected_city.city_name
+				SceneManager.swap_scenes("res://levels/minigame.tscn", get_tree().root, self, "fade_to_black")
 		else:
 			print("SPACEBAR pressed, but not in a city.")

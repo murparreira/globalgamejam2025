@@ -1,7 +1,9 @@
 class_name City extends Node2D
 
-@export var cleared : bool = false
-@export var minigame : String
+@export var city_name : String = 'city_1'
+@export var city_sprite : Texture2D
+
+@onready var sprite_2d: Sprite2D = $Sprite2D
 
 var playable_area: Array
 var game_area : TileMapLayer
@@ -9,6 +11,8 @@ var game_area : TileMapLayer
 signal player_moved(player_position: Vector2i)
 
 func _ready() -> void:
+	if city_sprite != null:
+		sprite_2d.texture = city_sprite
 	game_area = get_tree().get_first_node_in_group("game_area")
 	playable_area = game_area.get_used_cells()
 

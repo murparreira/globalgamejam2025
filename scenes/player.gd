@@ -12,6 +12,7 @@ var game_area : TileMapLayer
 signal player_moved(player_position: Vector2i, oxygen_levels: int)
 
 func _ready() -> void:
+	z_index = 99
 	animated_sprite_2d.play()
 	game_area = get_tree().get_first_node_in_group("game_area")
 	if game_area == null:
@@ -41,19 +42,16 @@ func set_starting_position(starting_position: Vector2i) -> void:
 	if !playable_area.has(starting_position):
 		return
 	global_position = game_area.map_to_local(starting_position)
-	global_position.x -= 16
-	global_position.y -= 16
 
 func move_to_cell(direction: Vector2i) -> void:
-	oxygen_levels -= 1
+	GameData.data["current_oxygen"] -= 1
 	var current_grid_position = game_area.local_to_map(position)
 	var target_grid_position = current_grid_position + direction
 	
 	if !playable_area.has(target_grid_position):
 		return
 
-	player_moved.emit(target_grid_position, oxygen_levels)
+	player_moved.emit(target_grid_position)
+	GameData.data['current_player_position'] = target_grid_position
 
 	global_position = game_area.map_to_local(target_grid_position)
-	#global_position.x -= 16
-	#global_position.y -= 16

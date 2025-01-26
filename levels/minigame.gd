@@ -2,6 +2,7 @@ extends Node2D
 
 @onready var arrow: Node2D = $GameContainer/Arrow
 @onready var arrow_collider: Area2D = $GameContainer/Arrow/Area2D
+@onready var player: Player = $Player
 
 @onready var game_over_label: RichTextLabel = $GameOverLabel
 
@@ -16,7 +17,10 @@ var tween: Tween = create_tween().set_loops()
 var wins : Array = []
 var continue_playing : bool = false
 
+signal minigame_ended
+
 func _ready() -> void:
+	minigame_ended.connect(_on_minigame_ended)
 	game_over_label.visible = false
 	arrow.position.x = 10
 
@@ -48,8 +52,19 @@ func _process(delta: float) -> void:
 		# Display the result
 		if !continue_playing:
 			game_over_label.visible = true
-			game_over_label.text = "Bom, não se pode ganhar todas não é mesmo? :("
+			game_over_label.text = "Bom, não se pode ganhar todas não é mesmo? :(\n\nVocê perdeu 20% do seu oxigênio!"
+			GameData.data["current_oxygen"] -= 20
+			GameData.data['levels'][GameData.data['current_level']]['cities'][GameData.data['current_minigame_city']]['completed'] = false
+			minigame_ended.emit()
 		else:
 			if wins.size() == 3:
 				game_over_label.visible = true
-				game_over_label.text = "É isso aí, mais uma entrega completada. :)"
+				game_over_label.text = "É isso aí, mais uma entrega feita, bom trabalho. :)"
+				GameData.data['levels'][GameData.data['current_level']]['cities'][GameData.data['current_minigame_city']]['completed'] = true
+				minigame_ended.emit()
+
+func _on_minigame_ended() -> void:
+	if tween.is_running():
+		tween.pause()
+	await get_tree().create_timer(3.0).timeout
+	SceneManager.swap_scenes("res://levels/" + GameData.data["current_level"] + ".tscn", get_tree().root, self, "fade_to_black")
