@@ -1,12 +1,12 @@
 [gd_scene load_steps=10 format=4 uid="uid://47v2yh7rmk6g"]
 
-[ext_resource type="Script" path="res://overworld.gd" id="1_lgbwe"]
+[ext_resource type="Script" path="res://levels/overworld.gd" id="1_lgbwe"]
 [ext_resource type="TileSet" uid="uid://tlsxhn46aqwj" path="res://resources/overworld.tres" id="1_lkodg"]
-[ext_resource type="PackedScene" uid="uid://equok5cjqcqu" path="res://resources/player.tscn" id="3_4f1sg"]
+[ext_resource type="PackedScene" uid="uid://equok5cjqcqu" path="res://scenes/player.tscn" id="3_4f1sg"]
 [ext_resource type="Texture2D" uid="uid://h3gp0uw20h84" path="res://assets/tilemap-road.png" id="3_tj2br"]
 [ext_resource type="Texture2D" uid="uid://bv800icc1id03" path="res://assets/arvore1.png" id="7_eaucf"]
-[ext_resource type="PackedScene" uid="uid://3kgshpypy3rm" path="res://city.tscn" id="7_h0mxv"]
-[ext_resource type="Script" path="res://city.gd" id="8_5kpgn"]
+[ext_resource type="PackedScene" uid="uid://3kgshpypy3rm" path="res://scenes/city.tscn" id="7_h0mxv"]
+[ext_resource type="Script" path="res://scenes/city.gd" id="8_5kpgn"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_e4cm7"]
 texture = ExtResource("3_tj2br")

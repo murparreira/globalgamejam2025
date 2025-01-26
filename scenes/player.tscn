@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://equok5cjqcqu"]
 
-[ext_resource type="Script" path="res://resources/player.gd" id="1_dvdog"]
+[ext_resource type="Script" path="res://scenes/player.gd" id="1_dvdog"]
 [ext_resource type="Texture2D" uid="uid://cqaqoyg00suvt" path="res://assets/walking-cycle.png" id="1_tg150"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wp00j"]

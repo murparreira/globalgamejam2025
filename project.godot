@@ -21,8 +21,8 @@ buses/default_bus_layout="res://resources/default_bus_layout.tres"
 
 [autoload]
 
-SceneManager="*res://scene_manager.gd"
-MusicManager="*res://music_manager.gd"
+SceneManager="*res://autoload/scene_manager.gd"
+MusicManager="*res://autoload/music_manager.gd"
 
 [display]
 

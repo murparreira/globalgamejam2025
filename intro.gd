@@ -29,7 +29,7 @@ func _ready() -> void:
 func show_next_text() -> void:
 	if current_text_index >= intro_texts.size():
 		# All texts have been shown, transition to the next scene
-		SceneManager.swap_scenes("res://overworld.tscn", get_tree().root, self, "fade_to_black")
+		SceneManager.swap_scenes("res://levels/level_1.tscn", get_tree().root, self, "fade_to_black")
 		return
 
 	story_label.text = intro_texts[current_text_index]

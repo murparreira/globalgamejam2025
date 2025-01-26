@@ -1,9 +1,9 @@
 [gd_scene load_steps=10 format=3 uid="uid://kwe4yisyu54p"]
 
-[ext_resource type="Script" path="res://minigame.gd" id="1_130j5"]
-[ext_resource type="PackedScene" uid="uid://3kgshpypy3rm" path="res://city.tscn" id="1_h0wuq"]
+[ext_resource type="Script" path="res://levels/minigame.gd" id="1_130j5"]
+[ext_resource type="PackedScene" uid="uid://3kgshpypy3rm" path="res://scenes/city.tscn" id="1_h0wuq"]
 [ext_resource type="Texture2D" uid="uid://dpkbp2vbvd8j1" path="res://assets/background.png" id="2_6n5ls"]
-[ext_resource type="PackedScene" uid="uid://equok5cjqcqu" path="res://resources/player.tscn" id="2_sqsnt"]
+[ext_resource type="PackedScene" uid="uid://equok5cjqcqu" path="res://scenes/player.tscn" id="2_sqsnt"]
 [ext_resource type="Texture2D" uid="uid://du5shvjy2jh28" path="res://assets/level3.png" id="3_5s7bq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3il7c"]

@@ -4,6 +4,7 @@ extends Node2D
 @onready var player: Player = $Player
 @onready var hint_label: RichTextLabel = $HUD/HintLabel
 @onready var city: City = $City
+@onready var o_2_label_value: Label = $HUD/PanelContainer/VBoxContainer/O2LabelValue
 
 var cities_positions : Array = []
 var current_selected_city : City
@@ -35,7 +36,9 @@ func get_all_tile_positions(tilemaplayer: TileMapLayer, layer: int) -> Array:
 				tile_positions.append(cell_position)
 	return tile_positions
 
-func _on_player_moved(player_position: Vector2i) -> void:
+func _on_player_moved(player_position: Vector2i, oxygen_levels: int) -> void:
+	if o_2_label_value != null:
+		o_2_label_value.text = str(oxygen_levels)
 	for city_data in cities_positions:
 		if city_data["position"] == player_position:
 			var blink_duration: float = 1.0
@@ -62,6 +65,6 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_accept"):
 		if current_selected_city != null:
 			print("SPACEBAR pressed in city: ", current_selected_city.name)
-			SceneManager.swap_scenes("res://minigame.tscn", get_tree().root, self, "fade_to_black")
+			SceneManager.swap_scenes("res://levels/minigame.tscn", get_tree().root, self, "fade_to_black")
 		else:
 			print("SPACEBAR pressed, but not in a city.")

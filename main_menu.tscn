@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://d0ymte60xy2l7"]
+[gd_scene load_steps=3 format=3 uid="uid://d0ymte60xy2l7"]
 
 [ext_resource type="Script" path="res://main_menu.gd" id="1_xyo40"]
+[ext_resource type="Texture2D" uid="uid://dpkbp2vbvd8j1" path="res://assets/background.png" id="2_0ans4"]
 
 [node name="MainMenu" type="CanvasLayer"]
 script = ExtResource("1_xyo40")
@@ -12,6 +13,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+texture = ExtResource("2_0ans4")
 expand_mode = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
