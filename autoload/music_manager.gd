@@ -4,7 +4,7 @@ var audio_player: AudioStreamPlayer
 
 func _ready():
 	audio_player = AudioStreamPlayer.new()
-	var music = load("res://assets/music_v1.wav")  
+	var music = load("res://assets/Mus_Gameplay_1.wav")  
 	audio_player.stream = music
 	add_child(audio_player)
 	audio_player.play()

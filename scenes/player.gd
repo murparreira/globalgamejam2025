@@ -51,6 +51,7 @@ func move_to_cell(direction: Vector2i) -> void:
 		return
 
 	player_moved.emit(target_grid_position)
+	SfxManager.play_footsteps()
 	GameData.data['current_player_position'] = target_grid_position
 
 	global_position = game_area.map_to_local(target_grid_position)
