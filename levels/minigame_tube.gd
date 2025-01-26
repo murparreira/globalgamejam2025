@@ -46,7 +46,19 @@ var scored_balls: Array[Ball] = []
 
 func _ready() -> void:
 	hint_label.visible = false
-	var sample_keys = ['A', 'D', '-', 'D', '-', '-', 'A', 'D', 'A', 'D']
+	var patterns: Array[Array] = [
+		["D", "-", "A", "A", "-", "D", "D", "D", "A", "-"],
+		["D", "-", "D", "A", "A", "-", "D", "D", "D", ""],
+		["A", "A", "-", "D", "D", "-", "A", "A", "-", ""],
+		["D", "-", "D", "A", "A", "-", "D", "D", "-", ""],
+		["A", "A", "-", "D", "D", "A", "-", "D", "D", "-"],
+		["A", "A", "-", "D", "D", "A", "-", "D", "D", "-"],
+		["A", "A", "-", "D", "D", "A", "-", "D", "D", "-"],
+		["A", "A", "-", "D", "D", "A", "-", "D", "D", "-"],
+		["A", "A", "-", "D", "D", "A", "-", "D", "D", "-"],
+		["A", "A", "-", "D", "D", "A", "-", "D", "D", "-"]
+	]
+	var sample_keys = patterns.pick_random()
 	for i in range(balls.size()):
 		balls[i].key = sample_keys[i]
 		if balls[i].key == "-":

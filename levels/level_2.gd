@@ -22,10 +22,10 @@ func initialize_game() -> void:
 	hint_label.visible = false
 
 	# Set up tube and player positions
-	tube.set_starting_position(Vector2i(2, 1))
+	tube.set_starting_position(Vector2i(1, 6))
 	var player_starting_position = GameData.data.get('current_player_position', Vector2i(0, 3))
 	if player_starting_position == null:
-		player_starting_position = Vector2i(0, 3)
+		player_starting_position = Vector2i(4, 4)
 	player.set_starting_position(player_starting_position)
 	o_2_label_value.text = str(GameData.data.get('current_oxygen', 0))
 

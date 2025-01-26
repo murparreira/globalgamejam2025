@@ -42,14 +42,14 @@ position = Vector2(960, 544)
 texture = ExtResource("1_wjda5")
 
 [node name="GameArea" type="TileMapLayer" parent="Visuals" groups=["game_area"]]
-tile_map_data = PackedByteArray("AAAAAAMAAAAAAAQAAAABAAMAAAABAAEAAAACAAMAAAABAAMAAAADAAMAAAABAAEAAAAEAAMAAAABAAEAAAAFAAMAAAABAAEAAAAGAAMAAAACAAIAAAAGAAIAAAABAAAAAAAGAAEAAAABAAAAAAAGAAAAAAACAAAAAAACAAIAAAABAAAAAAACAAEAAAABAAIAAAADAAEAAAACAAIAAAADAAAAAAACAAAAAAABAAEAAAAAAAIAAAABAAAAAAACAAAAAAA=")
+tile_map_data = PackedByteArray("AAABAAAAAAACAAAAAAADAAAAAAACAAAAAAABAAEAAAABAAAAAAABAAIAAAAAAAIAAAACAAMAAAAAAAIAAAADAAEAAAAAAAIAAAACAAIAAAACAAEAAAAFAAEAAAACAAEAAAAFAAMAAAACAAIAAAADAAMAAAABAAEAAAAEAAMAAAABAAEAAAAEAAEAAAABAAEAAAAFAAIAAAABAAAAAAA=")
 tile_set = SubResource("TileSet_d2o74")
 
 [node name="Player" parent="." instance=ExtResource("2_5bq7c")]
 position = Vector2(137, 1524)
 
 [node name="City" parent="." groups=["cities"] instance=ExtResource("3_m071i")]
-position = Vector2(1536, 0)
+position = Vector2(768, 0)
 
 [node name="Tube" parent="." instance=ExtResource("8_1e7k1")]
 position = Vector2(423, 1523)
@@ -60,13 +60,16 @@ position = Vector2(423, 1523)
 position = Vector2(231, 676)
 
 [node name="SpriteTree2" parent="." instance=ExtResource("7_mnhgm")]
-position = Vector2(1451, 676)
+position = Vector2(1640, 801)
 
 [node name="SpriteTree3" parent="." instance=ExtResource("7_mnhgm")]
-position = Vector2(1104, 481)
+position = Vector2(1024, 512)
 
 [node name="SpriteTree4" parent="." instance=ExtResource("7_mnhgm")]
 position = Vector2(633, 167)
 
 [node name="SpriteTree5" parent="." instance=ExtResource("7_mnhgm")]
 position = Vector2(98, 193)
+
+[node name="SpriteTree6" parent="." instance=ExtResource("7_mnhgm")]
+position = Vector2(1668, 164)
