@@ -13,6 +13,29 @@ radius = 108.791
 [node name="MinigameTube" type="Node2D"]
 script = ExtResource("1_hpo3i")
 
+[node name="HintLabel" type="RichTextLabel" parent="."]
+z_index = 99
+custom_minimum_size = Vector2(1920, 0)
+offset_top = 768.0
+offset_right = 1920.0
+offset_bottom = 808.0
+scale = Vector2(1, 1.6)
+theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
+text = "[center]press [b]space[/b] to continue"
+fit_content = true
+
+[node name="ResultLabel" type="RichTextLabel" parent="."]
+z_index = 99
+custom_minimum_size = Vector2(1920, 0)
+offset_top = 640.0
+offset_right = 1920.0
+offset_bottom = 680.0
+scale = Vector2(1, 1.6)
+theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
+fit_content = true
+
 [node name="TextureRect" type="TextureRect" parent="."]
 offset_left = 2.0
 offset_top = 5.0
