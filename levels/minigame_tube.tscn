@@ -71,6 +71,7 @@ position = Vector2(277, 404)
 movement_enabled = false
 
 [node name="ContactArea" type="Area2D" parent="."]
+position = Vector2(-5, -104)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ContactArea"]
 position = Vector2(192, 960)
@@ -85,43 +86,43 @@ texture = ExtResource("7_3h2pb")
 [node name="GameContainer" type="Node" parent="."]
 
 [node name="Ball" parent="GameContainer" instance=ExtResource("6_fxgxg")]
-position = Vector2(2048, 960)
+position = Vector2(2043, 856)
 key = "A"
 
 [node name="Ball2" parent="GameContainer" instance=ExtResource("6_fxgxg")]
-position = Vector2(2240, 960)
+position = Vector2(2235, 856)
 key = "A"
 
 [node name="Ball3" parent="GameContainer" instance=ExtResource("6_fxgxg")]
-position = Vector2(2432, 960)
+position = Vector2(2427, 856)
 key = "A"
 
 [node name="Ball4" parent="GameContainer" instance=ExtResource("6_fxgxg")]
-position = Vector2(2624, 960)
+position = Vector2(2619, 856)
 key = "A"
 
 [node name="Ball5" parent="GameContainer" instance=ExtResource("6_fxgxg")]
-position = Vector2(2816, 960)
+position = Vector2(2811, 856)
 key = "A"
 
 [node name="Ball6" parent="GameContainer" instance=ExtResource("6_fxgxg")]
-position = Vector2(3008, 960)
+position = Vector2(3003, 856)
 key = "A"
 
 [node name="Ball7" parent="GameContainer" instance=ExtResource("6_fxgxg")]
-position = Vector2(3200, 960)
+position = Vector2(3195, 856)
 key = "A"
 
 [node name="Ball8" parent="GameContainer" instance=ExtResource("6_fxgxg")]
-position = Vector2(3392, 960)
+position = Vector2(3387, 856)
 key = "A"
 
 [node name="Ball9" parent="GameContainer" instance=ExtResource("6_fxgxg")]
-position = Vector2(3584, 960)
+position = Vector2(3579, 856)
 key = "A"
 
 [node name="Ball10" parent="GameContainer" instance=ExtResource("6_fxgxg")]
-position = Vector2(3776, 960)
+position = Vector2(3771, 856)
 key = "A"
 
 [node name="Timer" type="Timer" parent="."]

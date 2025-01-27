@@ -1,6 +1,7 @@
 extends CanvasLayer
 
 func _ready():
+	GameData.reset_all_data()
 	$%PlayButton.pressed.connect(on_play_pressed)
 	$%QuitButton.pressed.connect(on_quit_pressed)
 

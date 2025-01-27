@@ -37,7 +37,7 @@ movement_enabled = false
 [node name="GameContainer" type="Node2D" parent="."]
 
 [node name="StopArea1" type="Node2D" parent="GameContainer"]
-position = Vector2(544, 960)
+position = Vector2(640, 832)
 
 [node name="ColorRect" type="ColorRect" parent="GameContainer/StopArea1"]
 offset_left = -64.0
@@ -54,7 +54,7 @@ scale = Vector2(2, 2)
 shape = SubResource("RectangleShape2D_3il7c")
 
 [node name="StopArea2" type="Node2D" parent="GameContainer"]
-position = Vector2(224, 960)
+position = Vector2(320, 832)
 
 [node name="ColorRect" type="ColorRect" parent="GameContainer/StopArea2"]
 offset_left = -64.0
@@ -70,7 +70,7 @@ position = Vector2(0, 16)
 shape = SubResource("RectangleShape2D_xwatb")
 
 [node name="StopArea3" type="Node2D" parent="GameContainer"]
-position = Vector2(1152, 960)
+position = Vector2(1248, 832)
 
 [node name="ColorRect" type="ColorRect" parent="GameContainer/StopArea3"]
 offset_left = -64.0
@@ -85,7 +85,7 @@ position = Vector2(-32, 16)
 shape = SubResource("RectangleShape2D_v804l")
 
 [node name="Arrow" type="Node2D" parent="GameContainer"]
-position = Vector2(1408, 960)
+position = Vector2(1504, 832)
 
 [node name="Sprite2D" type="Sprite2D" parent="GameContainer/Arrow"]
 texture = ExtResource("5_qbonj")
