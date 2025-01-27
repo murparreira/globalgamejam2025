@@ -49,7 +49,8 @@ func move_to_cell(direction: Vector2i) -> void:
 	
 	if !playable_area.has(target_grid_position):
 		return
-
+	
+	#MusicManager.play_sfx(MusicManager.footsteps_sfx_example.pick_random())
 	player_moved.emit(target_grid_position)
 	GameData.data['current_player_position'] = target_grid_position
 

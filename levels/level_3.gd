@@ -70,6 +70,12 @@ func update_oxygen_display() -> void:
 		GameData.data["current_oxygen"] -= 2
 		hud.o_2_label_value.text = str(GameData.data["current_oxygen"])
 
+		if GameData.data["current_oxygen"] < 40:
+			#MusicManager.play_sfx(MusicManager.warning_sfx_example)
+			MusicManager.crossfade_to(MusicManager.alternate_music, 0.5)
+		else:
+			MusicManager.crossfade_to(MusicManager.main_music, 0.5)
+
 func check_tube_collision(player_position: Vector2i) -> void:
 	for tube_data in tubes_positions:
 		if tube_data["position"] == player_position:
