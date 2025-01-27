@@ -172,13 +172,15 @@ func check_ball_input(input_key: String) -> void:
 			continue  # Skip missing balls
 
 		if contact_area.overlaps_area(ball) and ball.key == input_key and not ball in scored_balls:
+			MusicManager.play_sfx(MusicManager.correct_sfx_example)
 			print("Correct input! Ball matched: ", ball.name)
 			correct_balls += 1
 			scored_balls.append(ball)  # Mark the ball as scored
 			update_oxygen_cylinder()
 			disable_ball_collider(ball)  # Disable the collider immediately
 			break
-		# TODO: Add logic for incorrect input (e.g., penalty, sound effect)
+		else:
+			MusicManager.play_sfx(MusicManager.wrong_sfx_example)
 
 func update_oxygen_cylinder() -> void:
 	var total_balls = balls.size()
