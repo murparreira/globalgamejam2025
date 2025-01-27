@@ -85,3 +85,11 @@ process_mode = 3
 layout_mode = 2
 theme_type_variation = &"RedButton"
 text = "Quit Game"
+
+[node name="Label" type="Label" parent="."]
+offset_left = 56.0
+offset_top = 906.0
+offset_right = 239.0
+offset_bottom = 923.0
+scale = Vector2(1.48, 1.60205)
+text = "Use ESPAÇO para interagir com o cenário"

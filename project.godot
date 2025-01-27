@@ -35,6 +35,10 @@ window/stretch/scale_mode="integer"
 
 enabled=PackedStringArray("res://addons/script-ide/plugin.cfg")
 
+[gui]
+
+theme/custom_font="res://assets/CrayonHandRegular2016Demo.ttf"
+
 [input]
 
 ui_left={
