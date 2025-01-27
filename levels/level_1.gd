@@ -11,6 +11,8 @@ var tubes_positions: Array = []
 var current_selected_city: City
 var current_selected_tube: Tube
 
+var data: Dictionary = {}
+
 func _ready() -> void:
 	initialize_game()
 
@@ -140,3 +142,7 @@ func _process(delta: float) -> void:
 		MusicManager.play_sfx(MusicManager.lose_sfx_example)
 		print("Oxygen depleted! Game over...")
 		SceneManager.swap_scenes("res://game_over.tscn", get_tree().root, self, "fade_to_black")
+
+func get_data() -> Dictionary:
+	data["current_selected_city"] = current_selected_city
+	return data

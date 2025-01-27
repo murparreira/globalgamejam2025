@@ -30,12 +30,20 @@ fit_content = true
 [node name="ResultLabel" type="RichTextLabel" parent="."]
 z_index = 1000
 custom_minimum_size = Vector2(1920, 0)
-offset_top = 640.0
-offset_right = 1920.0
-offset_bottom = 680.0
-scale = Vector2(1, 1.6)
-theme_override_font_sizes/normal_font_size = 24
+offset_left = -512.0
+offset_top = 448.0
+offset_right = 1408.0
+offset_bottom = 541.0
+scale = Vector2(1.52, 2.56)
+theme_override_font_sizes/bold_italics_font_size = 30
+theme_override_font_sizes/italics_font_size = 30
+theme_override_font_sizes/mono_font_size = 30
+theme_override_font_sizes/normal_font_size = 30
+theme_override_font_sizes/bold_font_size = 30
 bbcode_enabled = true
+text = "[center]Resultado da operação: [b]8 alvos acertados[/b]
+\\n
+[b]80%[/b] do cilindro de oxigenio vai ser recuperado![/center]"
 fit_content = true
 
 [node name="TextureRect" type="TextureRect" parent="."]

@@ -123,12 +123,18 @@ color = Color(0.156863, 0.156863, 0.156863, 0.835294)
 [node name="GameOverLabel" type="RichTextLabel" parent="."]
 z_index = 1000
 custom_minimum_size = Vector2(640, 0)
-offset_left = 548.0
-offset_top = 420.0
-offset_right = 1188.0
-offset_bottom = 548.0
+offset_left = 512.0
+offset_top = 384.0
+offset_right = 1152.0
+offset_bottom = 512.0
 scale = Vector2(1.39402, 2.62371)
+theme_override_font_sizes/bold_italics_font_size = 30
+theme_override_font_sizes/italics_font_size = 30
+theme_override_font_sizes/mono_font_size = 30
 theme_override_font_sizes/normal_font_size = 30
+theme_override_font_sizes/bold_font_size = 30
 bbcode_enabled = true
-text = "Bom, não se pode ganhar todas não é mesmo? :(\\n\\nVocê perdeu 20% do seu oxigênio!"
+text = "Bom, não se pode ganhar todas não é mesmo? 
+\\n\\n
+Você perdeu 20% do seu oxigênio!"
 fit_content = true

@@ -49,6 +49,7 @@ var button_a = preload("res://assets/button-a.png")
 var button_d = preload("res://assets/button-d.png")
 
 func _ready() -> void:
+	result_label.visible = false
 	color_rect.visible = false
 	hint_label.visible = false
 	var patterns: Array[Array] = [
@@ -159,7 +160,7 @@ func _process(delta: float) -> void:
 	# Wait for player input after the minigame is over
 	if minigame_over:
 		result_label.visible = true
-		result_label.text = "[center]Resultado da operação: [b]" + str(correct_balls) + " alvos acertados[/b]\n[b]" + str(oxygen_percentage) + "%[/b] do cilindro de oxigenio vai ser recuperado![/center]"
+		result_label.text = "[center]Resultado da operação: [b]" + str(correct_balls) + " alvos acertados[/b]\n\n[b]" + str(oxygen_percentage) + "%[/b] do cilindro de oxigenio vai ser recuperado![/center]"
 		
 		if Input.is_action_just_pressed("ui_accept"):  # SPACEBAR
 			SceneManager.swap_scenes("res://levels/" + GameData.data["current_level"] + ".tscn", get_tree().root, self, "fade_to_black")
