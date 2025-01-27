@@ -81,7 +81,6 @@ var data = {
 }
 
 func set_defaults() -> void:
-	data['current_level'] = 'level_1'
 	data['current_minigame_city'] = null
 	data['current_minigame_tube'] = null
 	data['current_oxygen'] = 100
