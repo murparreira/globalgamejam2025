@@ -15,6 +15,8 @@ var footsteps_sfx_example: Array[AudioStream] = [
 	preload("res://assets/player_footstep02.ogg")
 ]
 var warning_sfx_example: AudioStream = preload("res://assets/player_warning_low_oxigen.ogg")
+var win_sfx_example: AudioStream = preload("res://assets/level_win.ogg")
+var lose_sfx_example: AudioStream = preload("res://assets/level_lose.ogg")
 
 # Track the currently playing music and fade state
 var current_music: AudioStream = null

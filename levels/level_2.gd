@@ -142,5 +142,6 @@ func _process(delta: float) -> void:
 
 	# Check if oxygen has reached zero
 	if GameData.data["current_oxygen"] <= 0:
+		MusicManager.play_sfx(MusicManager.lose_sfx_example)
 		print("Oxygen depleted! Game over...")
 		SceneManager.swap_scenes("res://game_over.tscn", get_tree().root, self, "fade_to_black")

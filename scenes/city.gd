@@ -14,6 +14,8 @@ func _ready() -> void:
 	if city_sprite != null:
 		sprite_2d.texture = city_sprite
 	game_area = get_tree().get_first_node_in_group("game_area")
+	if game_area == null:
+		return
 	playable_area = game_area.get_used_cells()
 
 func move_to_cell(direction: Vector2i) -> void:

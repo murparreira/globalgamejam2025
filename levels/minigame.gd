@@ -43,12 +43,14 @@ func _process(delta: float) -> void:
 			if collider == null:
 				continue
 			if arrow_collider.overlaps_area(collider):
+				MusicManager.play_sfx(MusicManager.correct_sfx_example)
 				wins.append(true)
 				collider.get_parent().queue_free()
 				tween.play()
 				continue_playing = true
 				break
 			else:
+				MusicManager.play_sfx(MusicManager.wrong_sfx_example)
 				continue_playing = false
 
 		# Display the result
