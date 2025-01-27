@@ -19,7 +19,7 @@ func _ready() -> void:
 		return
 	playable_area = game_area.get_used_cells()
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if !movement_enabled:
 		return
 	var direction = Vector2.ZERO
@@ -38,7 +38,6 @@ func _process(delta: float) -> void:
 		move_to_cell(direction)
 
 func set_starting_position(starting_position: Vector2i) -> void:
-	var current_grid_position = game_area.local_to_map(position)
 	if !playable_area.has(starting_position):
 		return
 	global_position = game_area.map_to_local(starting_position)

@@ -8,8 +8,6 @@ class_name City extends Node2D
 var playable_area: Array
 var game_area : TileMapLayer
 
-signal player_moved(player_position: Vector2i)
-
 func _ready() -> void:
 	if city_sprite != null:
 		sprite_2d.texture = city_sprite

@@ -10,6 +10,7 @@ var current_selected_city: City
 var current_selected_tube: Tube
 
 var data: Dictionary = {}
+var scene_swap_triggered: bool = false  # Flag to track scene swaps
 
 func _ready() -> void:
 	GameData.data["current_level"] = get_level_name()
@@ -19,6 +20,7 @@ func get_level_name() -> String:
 	return "base_level"  # Override this in child classes
 
 func initialize_game() -> void:
+	scene_swap_triggered = false  # Reset the flag
 	# Set up tube and player positions
 	setup_tube_positions()
 	var player_starting_position = GameData.data.get('current_player_position', Vector2i(0, 3))
@@ -32,6 +34,9 @@ func initialize_game() -> void:
 
 	# Initialize cities
 	initialize_cities()
+	
+	# Re-check the player's position to update selected city or tube
+	recheck_player_position()
 
 	print("USED CELLS: ", game_area.get_used_cells())
 	print("CITIES POSITIONS: ", cities_positions)
@@ -130,19 +135,29 @@ func check_all_cities_cleared() -> bool:
 			return false
 	return true
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
+	if scene_swap_triggered:
+		return  # Exit early if a scene swap has already been triggered
+
 	if check_all_cities_cleared():
 		GameData.set_defaults()
 		print("All cities cleared! Proceeding to the next level...")
+		scene_swap_triggered = true  # Set the flag to prevent further calls
 		SceneManager.swap_scenes(get_next_level_scene(), get_tree().root, self, "fade_to_black")
 
 	if GameData.data["current_oxygen"] <= 0:
 		MusicManager.play_sfx(MusicManager.lose_sfx_example)
 		print("Oxygen depleted! Game over...")
+		scene_swap_triggered = true  # Set the flag to prevent further calls
 		SceneManager.swap_scenes("res://game_over.tscn", get_tree().root, self, "fade_to_black")
 
 func get_next_level_scene() -> String:
 	return "res://levels/loading_level.tscn"  # Override this in child classes
+
+func recheck_player_position() -> void:
+	var player_position = game_area.local_to_map(player.position)
+	check_tube_collision(player_position)
+	check_city_collision(player_position)
 
 func get_data() -> Dictionary:
 	data["current_selected_city"] = current_selected_city

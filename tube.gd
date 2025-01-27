@@ -14,7 +14,6 @@ func _ready() -> void:
 	playable_area = game_area.get_used_cells()
 
 func set_starting_position(starting_position: Vector2i) -> void:
-	var current_grid_position = game_area.local_to_map(position)
 	if !playable_area.has(starting_position):
 		return
 	global_position = game_area.map_to_local(starting_position)
