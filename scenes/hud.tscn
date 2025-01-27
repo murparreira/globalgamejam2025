@@ -5,16 +5,6 @@
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_clyuw")
 
-[node name="HintLabel" type="RichTextLabel" parent="."]
-custom_minimum_size = Vector2(640, 0)
-offset_left = 1014.0
-offset_top = 139.0
-offset_right = 1654.0
-offset_bottom = 179.0
-bbcode_enabled = true
-text = "[center]aperte [b]ESPAÇO[/b] para entar[/center]"
-fit_content = true
-
 [node name="PanelContainer" type="PanelContainer" parent="."]
 offset_left = 23.0
 offset_top = 23.0
@@ -42,54 +32,11 @@ text = "100"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="GameOverPanel" type="MarginContainer" parent="."]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="PanelContainer" type="PanelContainer" parent="GameOverPanel"]
-custom_minimum_size = Vector2(300, 200)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-
-[node name="MarginContainer" type="MarginContainer" parent="GameOverPanel/PanelContainer"]
-layout_mode = 2
-theme_override_constants/margin_left = 16
-theme_override_constants/margin_top = 8
-theme_override_constants/margin_right = 16
-theme_override_constants/margin_bottom = 32
-
-[node name="VBoxContainer" type="VBoxContainer" parent="GameOverPanel/PanelContainer/MarginContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme_override_constants/separation = 20
-
-[node name="Label" type="Label" parent="GameOverPanel/PanelContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 32
-text = "Your oxygen reached zero!"
-
-[node name="Label2" type="Label" parent="GameOverPanel/PanelContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 32
-text = "Game Over!"
-horizontal_alignment = 1
-
-[node name="QuitButton" type="Button" parent="GameOverPanel/PanelContainer/MarginContainer/VBoxContainer"]
-unique_name_in_owner = true
-process_mode = 3
-layout_mode = 2
-theme_type_variation = &"RedButton"
-text = "Quit Game"
-
 [node name="Label" type="Label" parent="."]
-offset_left = 56.0
-offset_top = 906.0
-offset_right = 239.0
-offset_bottom = 923.0
+offset_left = 50.0
+offset_top = 991.0
+offset_right = 370.0
+offset_bottom = 1011.0
 scale = Vector2(1.48, 1.60205)
+theme_override_font_sizes/font_size = 20
 text = "Use ESPAÇO para interagir com o cenário"

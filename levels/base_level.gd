@@ -85,7 +85,6 @@ func get_oxygen_consumption_rate() -> int:
 func check_tube_collision(player_position: Vector2i) -> void:
 	for tube_data in tubes_positions:
 		if tube_data["position"] == player_position:
-			hud.hint_label.visible = true
 			current_selected_tube = tube_data["tube"]
 			print("Selected Tube: ", current_selected_tube.name)
 			return
@@ -95,21 +94,11 @@ func check_tube_collision(player_position: Vector2i) -> void:
 func check_city_collision(player_position: Vector2i) -> void:
 	for city_data in cities_positions:
 		if city_data["position"] == player_position:
-			start_hint_blink()
 			current_selected_city = city_data["city"]
 			print("Selected City: ", current_selected_city.city_name)
 			return
 
-	hud.hint_label.visible = false
 	current_selected_city = null
-
-func start_hint_blink() -> void:
-	hud.hint_label.visible = true
-	var blink_duration: float = 1.0
-	var tween = get_tree().create_tween()
-	tween.tween_property(hud.hint_label, "modulate:a", 0.0, blink_duration / 2)
-	tween.tween_property(hud.hint_label, "modulate:a", 1.0, blink_duration / 2)
-	tween.set_loops()
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_accept"):
