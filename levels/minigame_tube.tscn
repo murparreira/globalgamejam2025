@@ -24,7 +24,7 @@ offset_bottom = 808.0
 scale = Vector2(1, 1.6)
 theme_override_font_sizes/normal_font_size = 24
 bbcode_enabled = true
-text = "[center]press [b]space[/b] to continue"
+text = "[center]Use [b]ESPAÇO[/b] para continuar"
 fit_content = true
 
 [node name="ResultLabel" type="RichTextLabel" parent="."]

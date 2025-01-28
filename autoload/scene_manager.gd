@@ -176,12 +176,13 @@ func _monitor_load_status() -> void:
 			return # this last return isn't necessary but I like how the 3 dead ends stand out as similar
 
 ## internal - fires when content has begun loading but failed to complete
-func _on_content_failed_to_load(path:String) -> void:
-	printerr("error: Failed to load resource: '%s'" % [path])	
-
-## internal - fires when attemption to load invalid content (e.g. content does not exist or path is incorrect)
 func _on_content_invalid(path:String) -> void:
 	printerr("error: Cannot load resource: '%s'" % [path])
+	_loading_in_progress = false  # Reset the flag
+
+func _on_content_failed_to_load(path:String) -> void:
+	printerr("error: Failed to load resource: '%s'" % [path])
+	_loading_in_progress = false  # Reset the flag
 	
 ## internal - fires when content is done loading. This is responsible for data transfer, adding the incoming scene
 ## removing the outgoing scene, hanlding the zelda transition (if of that type), halting the game until the 
@@ -199,58 +200,45 @@ func _on_content_invalid(path:String) -> void:
 ## [b][color=plum]start_scene[/color][/b] implement this to kick off your scene. I use it to return control to the player. But you could also trigger events with the scene or anything else you want to hold until loading and transitioning are both totally done.[br][br]
 ## For sample implementations, see [Level]
 func _on_content_finished_loading(incoming_scene) -> void:
-	var outgoing_scene = _scene_to_unload	# NEW > can't use current_scene anymore
-	
-	# if our outgoing_scene has data to pass, give it to our incoming_scene
-	if outgoing_scene != null:	
+	_loading_in_progress = true
+	_load_content_safely(incoming_scene)
+	_loading_in_progress = false
+
+func _load_content_safely(incoming_scene) -> void:
+	var outgoing_scene = _scene_to_unload
+
+	if outgoing_scene != null:
 		if outgoing_scene.has_method("get_data") and incoming_scene.has_method("receive_data"):
 			incoming_scene.receive_data(outgoing_scene.get_data())
-	
-	# load the incoming into the designated node
+
 	_load_scene_into.add_child(incoming_scene)
-		# listen for this if you want to perform tasks on the scene immeidately after adding it to the tree
-	# ex: moveing the HUD back up to the top of the stack
-	scene_added.emit(incoming_scene,_loading_screen)
-	
-#	This block is only used by the zelda transition, which is a special case that doesn't use the loading screen
+	scene_added.emit(incoming_scene, _loading_screen)
+
 	if _transition == "zelda":
-		# slide new level in
 		incoming_scene.position.x = _zelda_transition_direction.x * LEVEL_W
 		incoming_scene.position.y = _zelda_transition_direction.y * LEVEL_H
-		var tween_in:Tween = get_tree().create_tween()
+		var tween_in: Tween = get_tree().create_tween()
 		tween_in.tween_property(incoming_scene, "position", Vector2.ZERO, 1).set_trans(Tween.TRANS_SINE)
 
-		# slide old level out
-		var tween_out:Tween = get_tree().create_tween()
-		var vector_off_screen:Vector2 = Vector2.ZERO
+		var tween_out: Tween = get_tree().create_tween()
+		var vector_off_screen: Vector2 = Vector2.ZERO
 		vector_off_screen.x = -_zelda_transition_direction.x * LEVEL_W
 		vector_off_screen.y = -_zelda_transition_direction.y * LEVEL_H
 		tween_out.tween_property(outgoing_scene, "position", vector_off_screen, 1).set_trans(Tween.TRANS_SINE)
-	#	# once the tweens are done, do some cleanup
 		await tween_in.finished
-	
-		# Remove the old scene
+
 	if _scene_to_unload != null:
-		if _scene_to_unload != get_tree().root: 
+		if _scene_to_unload != get_tree().root:
 			_scene_to_unload.queue_free()
-	
-	# called right after scene is added to tree (presuming _ready has fired)
-	# ex: do some setup before player gains control (I'm using it to position the player) 
-	if incoming_scene.has_method("init_scene"): 
+
+	if incoming_scene.has_method("init_scene"):
 		incoming_scene.init_scene()
-	
-	# probably not necssary since we split our _content_finished_loading but it won't hurt to have an extra check
+
 	if _loading_screen != null:
 		_loading_screen.finish_transition()
-		
-		# Wait or loading animation to finish
 		await _loading_screen.anim_player.animation_finished
 
-	# if your incoming scene implements init_scene() > call it here
-	# ex: I'm using it to enable control of the player (they're locked while in transition)
-	if incoming_scene.has_method("start_scene"): 
+	if incoming_scene.has_method("start_scene"):
 		incoming_scene.start_scene()
-	
-	# load is complete, free up SceneManager to load something else and report load_complete signal
-	_loading_in_progress = false
+
 	load_complete.emit(incoming_scene)
