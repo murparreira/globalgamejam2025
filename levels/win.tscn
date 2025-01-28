@@ -1,18 +1,77 @@
-[gd_scene load_steps=5 format=3 uid="uid://d2jaui5no3e16"]
+[gd_scene load_steps=10 format=3 uid="uid://d2jaui5no3e16"]
 
 [ext_resource type="Texture2D" uid="uid://dpkbp2vbvd8j1" path="res://assets/background.png" id="1_4qu60"]
 [ext_resource type="Script" path="res://levels/win.gd" id="1_6lwtg"]
 [ext_resource type="Texture2D" uid="uid://dkchsrcdlr7og" path="res://assets/walking01.png" id="2_h83cc"]
+[ext_resource type="Texture2D" uid="uid://chw0q3ywk7skp" path="res://assets/cidade1.png" id="3_a1or2"]
+[ext_resource type="Texture2D" uid="uid://bgllcqbsh6ahk" path="res://assets/cidade2.png" id="4_uc8jk"]
+[ext_resource type="Texture2D" uid="uid://cjbw3kqttjj8h" path="res://assets/cidade3.png" id="5_oy78k"]
+[ext_resource type="Texture2D" uid="uid://c082fmsr1br4t" path="res://assets/cidade4.png" id="6_r5vkl"]
+[ext_resource type="Texture2D" uid="uid://b7xsup5ys6q2p" path="res://assets/cidade5.png" id="7_bagfi"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5vnll"]
-bg_color = Color(0.25098, 0.2, 0.27451, 1)
-corner_radius_top_left = 20
-corner_radius_top_right = 20
-corner_radius_bottom_right = 20
-corner_radius_bottom_left = 20
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vkys5"]
 
 [node name="Win" type="CanvasLayer"]
 script = ExtResource("1_6lwtg")
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+z_index = 99
+offset_left = 366.0
+offset_top = 427.0
+offset_right = 622.0
+offset_bottom = 683.0
+texture = ExtResource("2_h83cc")
+stretch_mode = 2
+
+[node name="TextureRect3" type="TextureRect" parent="."]
+z_index = 99
+offset_left = 685.0
+offset_top = 47.0
+offset_right = 941.0
+offset_bottom = 303.0
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("3_a1or2")
+stretch_mode = 2
+
+[node name="TextureRect4" type="TextureRect" parent="."]
+z_index = 99
+offset_left = 65.0
+offset_top = 620.0
+offset_right = 321.0
+offset_bottom = 876.0
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("4_uc8jk")
+stretch_mode = 2
+
+[node name="TextureRect5" type="TextureRect" parent="."]
+z_index = 99
+offset_left = -2.0
+offset_top = -33.0
+offset_right = 254.0
+offset_bottom = 223.0
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("5_oy78k")
+stretch_mode = 2
+
+[node name="TextureRect6" type="TextureRect" parent="."]
+z_index = 99
+offset_left = 1262.0
+offset_top = 207.0
+offset_right = 1518.0
+offset_bottom = 463.0
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("6_r5vkl")
+stretch_mode = 2
+
+[node name="TextureRect7" type="TextureRect" parent="."]
+z_index = 99
+offset_left = 622.0
+offset_top = 519.0
+offset_right = 878.0
+offset_bottom = 775.0
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("7_bagfi")
+stretch_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="."]
 anchors_preset = 15
@@ -32,11 +91,11 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="PanelContainer" type="PanelContainer" parent="MarginContainer"]
-custom_minimum_size = Vector2(600, 350)
+custom_minimum_size = Vector2(800, 600)
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme_override_styles/panel = SubResource("StyleBoxFlat_5vnll")
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_override_styles/panel = SubResource("StyleBoxEmpty_vkys5")
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer"]
 layout_mode = 2
@@ -49,28 +108,24 @@ theme_override_constants/margin_bottom = 16
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_constants/separation = 20
+theme_override_constants/separation = 24
 
 [node name="Label" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 32
-text = "Você conseguiu restaurar todas as cidades, e salvou o mundo!"
+theme_override_font_sizes/font_size = 40
+text = "Você conseguiu restaurar todas as cidades!"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Label2" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 32
-text = "Parabéns"
+theme_override_font_sizes/font_size = 40
+text = "Parabéns, já pode bater o ponto"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="QuitButton" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_font_sizes/font_size = 36
 text = "Voltar ao menu inicial"
-
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-texture = ExtResource("2_h83cc")
-stretch_mode = 2

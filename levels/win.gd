@@ -2,7 +2,6 @@ extends CanvasLayer
 
 @onready var quit_button: Button = %QuitButton
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	quit_button.pressed.connect(_on_quit_pressed)
 
