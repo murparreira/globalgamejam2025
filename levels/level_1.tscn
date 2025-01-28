@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://brvcj84qiferm"]
+[gd_scene load_steps=21 format=4 uid="uid://brvcj84qiferm"]
 
 [ext_resource type="Script" path="res://levels/level_1.gd" id="1_mgvb0"]
 [ext_resource type="Texture2D" uid="uid://dpkbp2vbvd8j1" path="res://assets/background.png" id="1_wjda5"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://7mffi86mcsws" path="res://assets/tilemap-road-256.png" id="2_ek2ox"]
 [ext_resource type="Texture2D" uid="uid://cojcc1r3ct6ap" path="res://assets/tilemap-road-256-v2.png" id="3_e0xso"]
 [ext_resource type="PackedScene" uid="uid://3kgshpypy3rm" path="res://scenes/city.tscn" id="3_m071i"]
+[ext_resource type="Texture2D" uid="uid://chw0q3ywk7skp" path="res://assets/cidade1.png" id="7_6yhvr"]
 [ext_resource type="PackedScene" uid="uid://bsjkp76ypypxi" path="res://scenes/tree.tscn" id="7_mnhgm"]
 [ext_resource type="PackedScene" uid="uid://dkrnahxdmts20" path="res://tube.tscn" id="8_1e7k1"]
 [ext_resource type="PackedScene" uid="uid://dcvvuo6glqpmy" path="res://scenes/hud.tscn" id="8_p6qw6"]
@@ -78,6 +79,7 @@ position = Vector2(137, 1524)
 
 [node name="City" parent="." groups=["cities"] instance=ExtResource("3_m071i")]
 position = Vector2(768, 0)
+city_sprite = ExtResource("7_6yhvr")
 
 [node name="Tube" parent="." groups=["tubes"] instance=ExtResource("8_1e7k1")]
 position = Vector2(423, 1523)
