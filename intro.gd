@@ -43,10 +43,8 @@ func show_next_text() -> void:
 	await current_tween.finished
 	var seconds = 2.0
 	if current_text_index == 2:
-		seconds = 6.0
-	await get_tree().create_timer(seconds).timeout
-	current_text_index += 1
-	show_next_text()
+		seconds = 5.0
+	await get_tree().create_timer(seconds).timeout  
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_accept"):  # SPACEBAR is mapped to "ui_accept"
