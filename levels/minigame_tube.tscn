@@ -58,6 +58,7 @@ position = Vector2(1660, 683)
 texture = ExtResource("3_mjpwt")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
+visible = false
 modulate = Color(0, 0, 0, 1)
 offset_left = 1611.0
 offset_top = 614.0

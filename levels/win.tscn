@@ -1,8 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://d2jaui5no3e16"]
+[gd_scene load_steps=10 format=3 uid="uid://bsygjejpljhcv"]
 
 [ext_resource type="Texture2D" uid="uid://dpkbp2vbvd8j1" path="res://assets/background.png" id="1_4qu60"]
 [ext_resource type="Script" path="res://levels/win.gd" id="1_6lwtg"]
-[ext_resource type="Texture2D" uid="uid://dkchsrcdlr7og" path="res://assets/walking01.png" id="2_h83cc"]
+[ext_resource type="Texture2D" uid="uid://xokgpyf5rjy7" path="res://assets/winner.png" id="2_hpgxn"]
 [ext_resource type="Texture2D" uid="uid://chw0q3ywk7skp" path="res://assets/cidade1.png" id="3_a1or2"]
 [ext_resource type="Texture2D" uid="uid://bgllcqbsh6ahk" path="res://assets/cidade2.png" id="4_uc8jk"]
 [ext_resource type="Texture2D" uid="uid://cjbw3kqttjj8h" path="res://assets/cidade3.png" id="5_oy78k"]
@@ -16,62 +16,61 @@ script = ExtResource("1_6lwtg")
 
 [node name="TextureRect2" type="TextureRect" parent="."]
 z_index = 99
-offset_left = 366.0
-offset_top = 427.0
-offset_right = 622.0
-offset_bottom = 683.0
-texture = ExtResource("2_h83cc")
-stretch_mode = 2
+offset_left = 249.0
+offset_top = 237.0
+offset_right = 880.0
+offset_bottom = 868.0
+texture = ExtResource("2_hpgxn")
 
 [node name="TextureRect3" type="TextureRect" parent="."]
 z_index = 99
-offset_left = 685.0
-offset_top = 47.0
-offset_right = 941.0
-offset_bottom = 303.0
+offset_left = 1140.0
+offset_top = 36.0
+offset_right = 1192.0
+offset_bottom = 88.0
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("3_a1or2")
-stretch_mode = 2
+expand_mode = 1
 
 [node name="TextureRect4" type="TextureRect" parent="."]
 z_index = 99
-offset_left = 65.0
-offset_top = 620.0
-offset_right = 321.0
-offset_bottom = 876.0
+offset_left = 1431.0
+offset_top = 60.0
+offset_right = 1542.0
+offset_bottom = 171.0
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("4_uc8jk")
-stretch_mode = 2
+expand_mode = 1
 
 [node name="TextureRect5" type="TextureRect" parent="."]
 z_index = 99
-offset_left = -2.0
-offset_top = -33.0
-offset_right = 254.0
-offset_bottom = 223.0
+offset_left = 1085.0
+offset_top = 184.0
+offset_right = 1250.0
+offset_bottom = 349.0
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("5_oy78k")
-stretch_mode = 2
+expand_mode = 1
 
 [node name="TextureRect6" type="TextureRect" parent="."]
 z_index = 99
-offset_left = 1262.0
-offset_top = 207.0
-offset_right = 1518.0
-offset_bottom = 463.0
+offset_left = 1407.0
+offset_top = 243.0
+offset_right = 1652.0
+offset_bottom = 488.0
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("6_r5vkl")
-stretch_mode = 2
+expand_mode = 1
 
 [node name="TextureRect7" type="TextureRect" parent="."]
 z_index = 99
-offset_left = 622.0
-offset_top = 519.0
-offset_right = 878.0
-offset_bottom = 775.0
+offset_left = 842.0
+offset_top = 70.0
+offset_right = 959.0
+offset_bottom = 187.0
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("7_bagfi")
-stretch_mode = 2
+expand_mode = 1
 
 [node name="TextureRect" type="TextureRect" parent="."]
 anchors_preset = 15
@@ -113,14 +112,14 @@ theme_override_constants/separation = 24
 [node name="Label" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
-text = "Você conseguiu restaurar todas as cidades!"
+text = "Você conseguiu restaurar todas os distritos!"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Label2" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
-text = "Parabéns, já pode bater o ponto"
+text = "Seu dia de trabalho acabou."
 horizontal_alignment = 1
 vertical_alignment = 1
 

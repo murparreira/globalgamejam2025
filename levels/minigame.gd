@@ -127,12 +127,12 @@ func handle_failed_stop() -> void:
 
 func show_victory_screen() -> void:
 	is_action_cooldown = true
-	display_game_over("É isso aí, mais uma entrega feita, bom trabalho. :)")
+	display_game_over("Ufa! O filtro do distrito foi trocado com sucesso.")
 	mark_minigame_completed(true)
 	minigame_ended.emit()
 
 func show_failure_screen() -> void:
-	display_game_over("Bom, não se pode ganhar todas não é mesmo?\nTente Novamente!\n\nVocê perdeu [b]20%[/b] do seu oxigênio!")
+	display_game_over("Você não teve atenção para trocar o filtro corretamente\nTente Novamente!\n\nVocê perdeu [b]20%[/b] do seu oxigênio tentando!")
 	apply_oxygen_penalty()
 	mark_minigame_completed(false)
 	minigame_ended.emit()
