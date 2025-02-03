@@ -37,6 +37,7 @@ var successful_stops: Array[bool] = []
 var can_continue: bool = false
 var city_sprite
 var is_action_cooldown: bool = false
+var is_input_enabled: bool = true  # Add this flag
 
 signal minigame_ended
 
@@ -91,7 +92,8 @@ func is_position_valid(pos: int, placed_positions: Array) -> bool:
 	return true
 
 func _process(_delta: float) -> void:
-	if Input.is_action_just_pressed("ui_accept") and not is_action_cooldown:
+	# Only process input if input is enabled
+	if is_input_enabled and Input.is_action_just_pressed("ui_accept") and not is_action_cooldown:
 		handle_player_input()
 
 func handle_player_input() -> void:
@@ -149,10 +151,16 @@ func mark_minigame_completed(completed: bool) -> void:
 	GameData.data['levels'][GameData.data['current_level']]['cities'][GameData.data['current_minigame_city']]['completed'] = completed
 
 func _on_minigame_ended() -> void:
+	# Disable input
+	is_input_enabled = false
+
 	if tween.is_running():
 		tween.pause()
+
+	# Wait for the game over delay timer
 	await get_tree().create_timer(GAME_OVER_DELAY).timeout
-	is_action_cooldown = false
+
+	# Swap scenes with fade-to-black transition
 	SceneManager.swap_scenes(
 		"res://levels/" + GameData.data["current_level"] + ".tscn",
 		get_tree().root,
